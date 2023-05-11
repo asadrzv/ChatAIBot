@@ -20,7 +20,7 @@ class OpenAIManager {
     }
 
     // Send completion text to OpenAI client and retrieve AI generated output
-    func send(text: String, completion: @escaping (String) -> ()) {
+    func sendCompletion(text: String, completion: @escaping (String) -> ()) {
         openAI.sendCompletion(
             with: text,
             model: .gpt3(.davinci),

@@ -25,7 +25,7 @@ class ChatViewModel: ObservableObject {
         self.messageCount += 1 // Separately increment message count for auto-scroll animation
         
         // Add new message sent by OpenAI Chat bot to list of all messages
-        OpenAIManager.shared.send(text: messageText) { response in
+        OpenAIManager.shared.sendCompletion(text: messageText) { response in
             let formattedResponse = response.trimmingCharacters(in: .whitespaces)
             let chatBotMessage = Message(text: formattedResponse, type: .Received)
             
