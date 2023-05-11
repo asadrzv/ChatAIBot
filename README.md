@@ -1,6 +1,6 @@
 # Chat AI Bot
 
-This is a basic iOS SwiftUI chat AI bot made using the [OpenAI HTTP API] (https://platform.openai.com/docs/api-reference) and the [OpenAISwift Wrapper Library](https://github.com/adamrushy/OpenAISwift).
+This is a basic iOS SwiftUI chat AI bot made using the [OpenAI HTTP API](https://platform.openai.com/docs/api-reference) and the [OpenAISwift Wrapper Library](https://github.com/adamrushy/OpenAISwift).
 
 Time spent: **2** hours spent in total
 
