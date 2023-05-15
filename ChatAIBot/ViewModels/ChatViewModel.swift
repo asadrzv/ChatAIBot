@@ -31,7 +31,7 @@ class ChatViewModel: ObservableObject {
         openAIManager.sendCompletion(text: messageText) { result in
             switch result {
             case .success(let response):
-                let formattedResponse = response.trimmingCharacters(in: .whitespaces)
+                let formattedResponse = response.trimmingCharacters(in: .whitespacesAndNewlines)
                 let chatBotMessage = Message(text: formattedResponse, type: .Received)
                 
                 DispatchQueue.main.async {
