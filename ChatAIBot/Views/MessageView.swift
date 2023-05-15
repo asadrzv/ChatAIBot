@@ -17,9 +17,9 @@ struct MessageView: View {
                 Text(message.text)
                     .padding(.horizontal)
                     .padding(.vertical, 10)
-                    // Set message bubble color to gray (received) or blue (sent)
+                    // Set message bubble color to blue (received) or gray (sent)
                     .background(message.isUserMessage ? .blue.opacity(0.9) : .gray.opacity(0.3))
-                    // Set message text to gray (received) or blue (sent)
+                    // Set message text to white (received) or black (sent)
                     .foregroundColor(message.isUserMessage ? .white : .black)
                     .cornerRadius(10)
             }
