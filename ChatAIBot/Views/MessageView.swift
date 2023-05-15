@@ -11,9 +11,6 @@ struct MessageView: View {
     let message: Message
     
     var body: some View {
-        // Determines if the message is received or sent by user
-        let isReceived = !message.isUserMessage
-
         HStack {
             ZStack {
                 // Message text content
@@ -21,16 +18,16 @@ struct MessageView: View {
                     .padding(.horizontal)
                     .padding(.vertical, 10)
                     // Set message bubble color to gray (received) or blue (sent)
-                    .background(isReceived ? .gray.opacity(0.3) : .blue.opacity(0.9))
+                    .background(message.isUserMessage ? .blue.opacity(0.9) : .gray.opacity(0.3))
                     // Set message text to gray (received) or blue (sent)
-                    .foregroundColor(isReceived ? .black : .white)
+                    .foregroundColor(message.isUserMessage ? .white : .black)
                     .cornerRadius(10)
             }
-            .frame(width: 400 * 0.7, alignment: isReceived ? .leading : .trailing)
+            .frame(width: 400 * 0.7, alignment: message.isUserMessage ? .trailing : .leading)
             .padding(.vertical)
         }
         // Align message to left (received) or right (sent)
-        .frame(maxWidth: .infinity, alignment: isReceived ? .leading : .trailing)
+        .frame(maxWidth: .infinity, alignment: message.isUserMessage ? .trailing : .leading)
     }
 }
 
