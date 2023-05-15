@@ -50,7 +50,7 @@ struct ChatView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 // Botoom tool bar view to type/send new message
-                ToolBarView
+                BottomToolBarView
             }
             .padding(.top, 1)
             .navigationTitle("Chat Bot")
@@ -60,7 +60,7 @@ struct ChatView: View {
     
     // MARK: - Custom Views
     
-    private var ToolBarView: some View {
+    private var BottomToolBarView: some View {
         VStack {
             HStack {
                 // Text field to get user message to send
