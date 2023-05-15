@@ -9,10 +9,8 @@ import SwiftUI
 
 struct ChatView: View {
     @ObservedObject var chatViewModel = ChatViewModel()
-    
-    @FocusState private var isFocused
-    
-    static let scrollToBottomPlaceholder = "" // Share scroll string with all messages
+    @FocusState private var isTextFieldFocused // Checks if user is typing to bring up keyboard
+    @Namespace var bottomID // ID of bottom anchor Spacer of ScrollView for auto-scrolling
     
     var body: some View {
         NavigationStack {
@@ -27,15 +25,13 @@ struct ChatView: View {
                             .padding(.horizontal)
                             
                             // Empty spacer at bottom of view to auto scroll to
-                            HStack {
-                                Spacer()
-                            }
-                            .id(Self.scrollToBottomPlaceholder)
+                            Spacer()
+                                .id(bottomID)
                         }
                         // Auto scroll to latest chat message when message count increases
                         .onReceive(chatViewModel.$messageCount) { _ in
                             withAnimation(.easeOut(duration: 0.5)) {
-                                scrollViewProxy.scrollTo(Self.scrollToBottomPlaceholder, anchor: .bottom)
+                                scrollViewProxy.scrollTo(bottomID, anchor: .bottom)
                             }
                         }
                     }
@@ -44,7 +40,7 @@ struct ChatView: View {
                 ToolBarView
             }
             .padding(.top, 1)
-            .navigationTitle("ChatBot")
+            .navigationTitle("Chat Bot")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -55,12 +51,12 @@ struct ChatView: View {
         VStack {
             HStack {
                 // Text field to get user message to send
-                TextField("Message", text: $chatViewModel.messageText)
+                TextField("Ask me anything...", text: $chatViewModel.messageText)
                     .padding(.horizontal)
                     .frame(height: 40)
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
-                    .focused($isFocused)
+                    .focused($isTextFieldFocused)
                 
                 // Send messsage button
                 Button(action: chatViewModel.sendMessage) {

@@ -8,12 +8,7 @@
 import Foundation
 
 struct Message: Identifiable {
-    enum MessageType {
-        case Received
-        case Sent
-    }
-    
     let id = UUID()
     let text: String
-    let type: MessageType
+    let isUserMessage: Bool
 }

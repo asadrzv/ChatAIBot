@@ -12,7 +12,7 @@ struct MessageView: View {
     
     var body: some View {
         // Determines if the message is received or sent by user
-        let isReceived = message.type == .Received
+        let isReceived = !message.isUserMessage
 
         HStack {
             ZStack {

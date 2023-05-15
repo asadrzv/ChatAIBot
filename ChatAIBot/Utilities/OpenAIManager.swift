@@ -32,7 +32,6 @@ class OpenAIManager {
                 let output = model.choices?.first?.text ?? ""
                 completion(.success(output))
             case .failure(let model):
-                print(model.localizedDescription)
                 completion(.failure(model))
             }
         }

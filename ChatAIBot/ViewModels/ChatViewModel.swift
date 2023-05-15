@@ -18,11 +18,12 @@ class ChatViewModel: ObservableObject {
     func sendMessage() {
         // Cancel send message if text empty
         guard !messageText.trimmingCharacters(in: .whitespaces).isEmpty else {
+            print("ERROR: Message text empty!")
             return
         }
         
         // Add new message sent by user to list of messages
-        let userMessage = Message(text: messageText, type: .Sent)
+        let userMessage = Message(text: messageText, isUserMessage: true)
         self.messages.append(userMessage)
         self.messageCount += 1 // Separately increment message count for auto-scroll animation
         
@@ -31,8 +32,9 @@ class ChatViewModel: ObservableObject {
         openAIManager.sendCompletion(text: messageText) { result in
             switch result {
             case .success(let response):
+                print("SUCCESS: Successfully retrieved ChatBot response!")
                 let formattedResponse = response.trimmingCharacters(in: .whitespacesAndNewlines)
-                let chatBotMessage = Message(text: formattedResponse, type: .Received)
+                let chatBotMessage = Message(text: formattedResponse, isUserMessage: false)
                 
                 DispatchQueue.main.async {
                     self.messages.append(chatBotMessage)
@@ -40,7 +42,7 @@ class ChatViewModel: ObservableObject {
                     self.messageText = ""
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                print("ERROR: \(error.localizedDescription)")
             }
         }
     }

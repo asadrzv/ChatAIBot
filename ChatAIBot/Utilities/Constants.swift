@@ -11,6 +11,6 @@ struct Constants {
     // Sample chat message
     static let sampleMessage = Message(
         text: "Hello chat bot! How are you?",
-        type: .Sent
+        isUserMessage: true
     )
 }
