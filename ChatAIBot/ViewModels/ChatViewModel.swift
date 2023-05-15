@@ -8,14 +8,14 @@
 import Foundation
 
 class ChatViewModel: ObservableObject {
-    private let openAINetwork: OpenAIService
+    private let openAIService: OpenAIService
     
     @Published var messages = [Message]()
     @Published var messageText = ""
     @Published var messageCount = 0
     
-    init(openAINetwork: OpenAIService) {
-        self.openAINetwork = openAINetwork
+    init(openAIService: OpenAIService) {
+        self.openAIService = openAIService
     }
         
     // Send message through OpenAI client and append it to the list of models
@@ -35,7 +35,7 @@ class ChatViewModel: ObservableObject {
         
         // Get OpenAI Chat Bot response to user message
         // Add response to list of messages
-        openAINetwork.sendCompletion(text: messageText) { result in
+        openAIService.sendCompletion(text: messageText) { result in
             switch result {
             case .success(let response):
                 print("SUCCESS: Successfully retrieved ChatBot response!")

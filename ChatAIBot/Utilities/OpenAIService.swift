@@ -8,6 +8,7 @@
 import Foundation
 
 // Interface for implementing OpenAI functions from OpenAISwift Library
+// Use protocal-driven development and dependency injection to allow testing
 protocol OpenAIService {
     
     // Predict completion text for input text

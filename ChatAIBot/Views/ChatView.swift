@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChatView: View {
-    @ObservedObject var chatViewModel = ChatViewModel(openAINetwork: OpenAIManager())
+    @ObservedObject var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
     
     @FocusState private var isTextFieldFocused // Checks if user is typing to bring up keyboard
     @Namespace var bottomID // ID of bottom anchor Spacer of ScrollView for auto-scrolling
