@@ -8,6 +8,8 @@
 import Foundation
 
 class ChatViewModel: ObservableObject {
+    private let openAIManager = OpenAIManager()
+    
     @Published var messages = [Message]()
     @Published var messageText = ""
     @Published var messageCount = 0
@@ -19,20 +21,26 @@ class ChatViewModel: ObservableObject {
             return
         }
         
-        // Add new message sent by user to list of all messages
+        // Add new message sent by user to list of messages
         let userMessage = Message(text: messageText, type: .Sent)
         self.messages.append(userMessage)
         self.messageCount += 1 // Separately increment message count for auto-scroll animation
         
-        // Add new message sent by OpenAI Chat bot to list of all messages
-        OpenAIManager.shared.sendCompletion(text: messageText) { response in
-            let formattedResponse = response.trimmingCharacters(in: .whitespaces)
-            let chatBotMessage = Message(text: formattedResponse, type: .Received)
-            
-            DispatchQueue.main.async {
-                self.messages.append(chatBotMessage)
-                self.messageCount += 1
-                self.messageText = ""
+        // Get OpenAI Chat Bot response to user message
+        // Add response to list of messages
+        openAIManager.sendCompletion(text: messageText) { result in
+            switch result {
+            case .success(let response):
+                let formattedResponse = response.trimmingCharacters(in: .whitespaces)
+                let chatBotMessage = Message(text: formattedResponse, type: .Received)
+                
+                DispatchQueue.main.async {
+                    self.messages.append(chatBotMessage)
+                    self.messageCount += 1
+                    self.messageText = ""
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }

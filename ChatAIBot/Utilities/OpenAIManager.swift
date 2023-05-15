@@ -9,8 +9,6 @@ import Foundation
 import OpenAISwift
 
 class OpenAIManager {
-    static let shared = OpenAIManager()
-    
     private var openAI: OpenAISwift
 
     init() {
@@ -20,7 +18,7 @@ class OpenAIManager {
     }
 
     // Send completion text to OpenAI client and retrieve AI generated output
-    func sendCompletion(text: String, completion: @escaping (String) -> ()) {
+    func sendCompletion(text: String, completion: @escaping (Result<String, Error>) -> Void) {
         openAI.sendCompletion(
             with: text,
             model: .gpt3(.davinci),
@@ -31,9 +29,10 @@ class OpenAIManager {
             switch result {
             case .success(let model):
                 let output = model.choices?.first?.text ?? ""
-                completion(output)
+                completion(.success(output))
             case .failure(let model):
                 print(model.localizedDescription)
+                completion(.failure(model))
             }
         }
     }
