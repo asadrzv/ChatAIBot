@@ -17,7 +17,8 @@ class OpenAIManager {
         openAI = OpenAISwift(authToken: apiKey)
     }
 
-    // Send completion text to OpenAI client and retrieve AI generated output
+    // Predict completion text for user message using OpenAI's GPT-3
+    // Return resulting generated response or an error
     func sendCompletion(text: String, completion: @escaping (Result<String, Error>) -> Void) {
         openAI.sendCompletion(
             with: text,
