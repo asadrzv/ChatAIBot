@@ -31,8 +31,8 @@ class OpenAIManager {
             case .success(let model):
                 let output = model.choices?.first?.text ?? ""
                 completion(.success(output))
-            case .failure(let model):
-                completion(.failure(model))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
