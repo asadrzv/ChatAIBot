@@ -18,36 +18,10 @@ struct ChatView: View {
             VStack {
                 if !chatViewModel.messages.isEmpty {
                     // Chat messsage bubbles with auto scroll to latest messge
-                    ScrollView {
-                        ScrollViewReader { scrollViewProxy in
-                            VStack {
-                                ForEach(chatViewModel.messages) { message in
-                                    MessageView(message: message)
-                                }
-                                .padding(.horizontal)
-                                
-                                // Empty spacer at bottom of view to auto scroll to
-                                Spacer()
-                                    .id(bottomID)
-                            }
-                            // Auto scroll to latest chat message when message count increases
-                            .onReceive(chatViewModel.$messageCount) { _ in
-                                withAnimation(.easeOut(duration: 0.5)) {
-                                    scrollViewProxy.scrollTo(bottomID, anchor: .bottom)
-                                }
-                            }
-                        }
-                    }
+                    MessagesView
                 } else {
                     // Empty chat view message/image
-                    VStack {
-                        Image(systemName: "ellipses.bubble")
-                            .font(.largeTitle)
-                        Text("Ask me anything...")
-                            .font(.subheadline)
-                            .padding(10)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    PlaceholderView
                 }
                 // Botoom tool bar view to type/send new message
                 BottomToolBarView
@@ -60,6 +34,43 @@ struct ChatView: View {
     
     // MARK: - Custom Views
     
+    // Chat messsage bubbles with auto scroll to latest messge
+    private var MessagesView: some View {
+        ScrollView {
+            ScrollViewReader { scrollViewProxy in
+                VStack {
+                    ForEach(chatViewModel.messages) { message in
+                        MessageView(message: message)
+                    }
+                    .padding(.horizontal)
+                    
+                    // Empty spacer at bottom of view to auto scroll to
+                    Spacer()
+                        .id(bottomID)
+                }
+                // Auto scroll to latest chat message when message count increases
+                .onReceive(chatViewModel.$messageCount) { _ in
+                    withAnimation(.easeOut(duration: 0.5)) {
+                        scrollViewProxy.scrollTo(bottomID, anchor: .bottom)
+                    }
+                }
+            }
+        }
+    }
+    
+    // Empty chat placeholder message/image
+    private var PlaceholderView: some View {
+        VStack {
+            Image(systemName: "ellipses.bubble")
+                .font(.largeTitle)
+            Text("Ask me anything...")
+                .font(.subheadline)
+                .padding(10)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    // Botoom tool bar view to type/send new message
     private var BottomToolBarView: some View {
         VStack {
             HStack {
