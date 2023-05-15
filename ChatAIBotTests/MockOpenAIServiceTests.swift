@@ -21,13 +21,14 @@ final class MockOpenAIServiceTests: XCTestCase {
     }
     
     func testSendMessage() throws {
+        // Simulate user sending single message
         mockChatViewModel.messageText = "SAMPLE USER MESSAGE"
         mockChatViewModel.sendMessage()
         
-        // Make sure user message added to list of messages
+        // Assert user message added to list of messages
         XCTAssert(mockChatViewModel.messages[0].text == "SAMPLE USER MESSAGE")
         
-        // Make sure ChatBot response (async) is added to life of messages
+        // Assert ChatBot response (async) is added to life of messages
         let asyncExpectation = expectation(description: "Async send message block executed.")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             asyncExpectation.fulfill()
