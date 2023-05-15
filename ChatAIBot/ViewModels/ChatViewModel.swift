@@ -8,16 +8,22 @@
 import Foundation
 
 class ChatViewModel: ObservableObject {
-    private let openAIManager = OpenAIManager()
+    private let openAINetwork: OpenAIService
     
     @Published var messages = [Message]()
     @Published var messageText = ""
     @Published var messageCount = 0
+    
+    init(openAINetwork: OpenAIService) {
+        self.openAINetwork = openAINetwork
+    }
         
     // Send message through OpenAI client and append it to the list of models
     func sendMessage() {
-        // Cancel send message if text empty
-        guard !messageText.trimmingCharacters(in: .whitespaces).isEmpty else {
+        let formattedMessageText = messageText.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        // Do not send message if text empty
+        guard !formattedMessageText.isEmpty else {
             print("ERROR: Message text empty!")
             return
         }
@@ -29,7 +35,7 @@ class ChatViewModel: ObservableObject {
         
         // Get OpenAI Chat Bot response to user message
         // Add response to list of messages
-        openAIManager.sendCompletion(text: messageText) { result in
+        openAINetwork.sendCompletion(text: messageText) { result in
             switch result {
             case .success(let response):
                 print("SUCCESS: Successfully retrieved ChatBot response!")

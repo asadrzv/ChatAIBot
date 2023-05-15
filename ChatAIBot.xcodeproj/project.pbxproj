@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2411FDF02A12B6610043D50A /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411FDEF2A12B6610043D50A /* OpenAIService.swift */; };
 		24DDC1092A0C25830063DC5C /* ChatAIBotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DDC1082A0C25830063DC5C /* ChatAIBotApp.swift */; };
 		24DDC10D2A0C25880063DC5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24DDC10C2A0C25880063DC5C /* Assets.xcassets */; };
 		24DDC1102A0C25880063DC5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24DDC10F2A0C25880063DC5C /* Preview Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2411FDEF2A12B6610043D50A /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		24DDC1052A0C25830063DC5C /* ChatAIBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatAIBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DDC1082A0C25830063DC5C /* ChatAIBotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAIBotApp.swift; sourceTree = "<group>"; };
 		24DDC10C2A0C25880063DC5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		24DDC1412A0C35E20063DC5C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		24DDC1432A0C36220063DC5C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		24DDC1472A0C7C400063DC5C /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
-		24DDC1482A0C7DC30063DC5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		24DDC1482A0C7DC30063DC5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				24DDC1432A0C36220063DC5C /* Constants.swift */,
+				2411FDEF2A12B6610043D50A /* OpenAIService.swift */,
 				24DDC1392A0C2D5A0063DC5C /* OpenAIManager.swift */,
 			);
 			path = Utilities;
@@ -319,6 +322,7 @@
 				24DDC13C2A0C2E620063DC5C /* ChatView.swift in Sources */,
 				24DDC13A2A0C2D5A0063DC5C /* OpenAIManager.swift in Sources */,
 				24DDC13E2A0C30800063DC5C /* ChatViewModel.swift in Sources */,
+				2411FDF02A12B6610043D50A /* OpenAIService.swift in Sources */,
 				24DDC1422A0C35E20063DC5C /* Message.swift in Sources */,
 				24DDC1442A0C36220063DC5C /* Constants.swift in Sources */,
 				24DDC1092A0C25830063DC5C /* ChatAIBotApp.swift in Sources */,
