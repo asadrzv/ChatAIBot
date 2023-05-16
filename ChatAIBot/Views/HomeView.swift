@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     var body: some View {
         TabView {
             ChatGPT3View()
                 .tabItem {
-                    Label("Chat Bot", systemImage: "ellipsis.message")
+                    Label("Chat AI", systemImage: "ellipsis.message")
                 }
             ChatDALLEView()
                 .tabItem {
-                    Label("Image Bot", systemImage: "theatermask.and.paintbrush")
+                    Label("Image AI", systemImage: "theatermask.and.paintbrush")
                 }
         }
     }
