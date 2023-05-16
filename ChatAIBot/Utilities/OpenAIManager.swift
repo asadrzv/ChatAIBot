@@ -23,7 +23,7 @@ class OpenAIManager: OpenAIService {
         openAI.sendCompletion(
             with: prompt,
             model: .gpt3(.curie),
-            maxTokens: 500,
+            maxTokens: 200,
             temperature: 0.4
         ) { result in
             

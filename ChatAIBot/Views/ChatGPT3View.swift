@@ -1,5 +1,5 @@
 //
-//  ChatView.swift
+//  ChatGPT3View.swift
 //  ChatAIBot
 //
 //  Created by Asad Rizvi on 5/10/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatView: View {
+struct ChatGPT3View: View {
     @ObservedObject var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
     
     @FocusState private var isTextFieldFocused // Checks if user is typing to bring up keyboard
@@ -35,7 +35,7 @@ struct ChatView: View {
                 }
             }
             .padding(.top, 1)
-            .navigationTitle("Chat Bot")
+            .navigationTitle("GPT-3")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -69,7 +69,7 @@ struct ChatView: View {
     // Empty chat placeholder message/image
     private var PlaceholderView: some View {
         VStack {
-            Image(systemName: "ellipses.bubble")
+            Image(systemName: "ellipsis.message")
                 .font(.largeTitle)
             Text("Ask me anything...")
                 .font(.subheadline)
@@ -113,6 +113,6 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView()
+        ChatGPT3View()
     }
 }

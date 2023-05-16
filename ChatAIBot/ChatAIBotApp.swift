@@ -11,7 +11,7 @@ import SwiftUI
 struct ChatAIBotApp: App {
     var body: some Scene {
         WindowGroup {
-            ChatView()
+            HomeView()
         }
     }
 }
