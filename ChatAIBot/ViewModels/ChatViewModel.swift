@@ -16,6 +16,12 @@ class ChatViewModel: ObservableObject {
     init(openAIService: OpenAIService) {
         self.openAIService = openAIService
     }
+    
+    // Clear all chat messages
+    func clearChat() {
+        messages = [Message]()
+        messageCount = 0
+    }
         
     // Send message through OpenAI client and append it to the list of models
     func sendMessage(messageText: String) {

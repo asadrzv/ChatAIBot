@@ -27,6 +27,14 @@ struct ChatView: View {
                 // Botoom tool bar view to type/send new message
                 BottomToolBarView
             }
+            .toolbar {
+                // Clear chat button
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Button(action: chatViewModel.clearChat) {
+                        Text("Clear")
+                    }
+                }
+            }
             .padding(.top, 1)
             .navigationTitle("Chat Bot")
             .navigationBarTitleDisplayMode(.inline)
