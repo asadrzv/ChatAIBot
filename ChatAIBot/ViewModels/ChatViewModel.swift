@@ -18,13 +18,13 @@ class ChatViewModel: ObservableObject {
         self.openAIService = openAIService
     }
     
+    // MARK: - Action Handlers
+    
     // Clear all chat messages
     func clearChat() {
         messages = [Message]()
         messageCount = 0
     }
-    
-    // MARK: - Action Handlers
     
     // Send message to get GPT-3 completion
     func sendGPT3Message() {
