@@ -42,7 +42,7 @@ final class ChatViewModelTests: XCTestCase {
     }
     
     // Test getCompletion function in ChatViewModel
-    func testGetCompletion() {
+    func testSendGPT3Message() {
         // Simulate user sending single message
         mockChatViewModel.sendMessage(content: "SAMPLE USER MESSAGE", type: .text)
         
@@ -62,7 +62,7 @@ final class ChatViewModelTests: XCTestCase {
     }
     
     // Test getGeneratedImage function in ChatViewModel
-    func testGetGeneratedImage() {
+    func testSendDALLEMessage() {
         let sampleImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
         
         // Simulate user sending single message
