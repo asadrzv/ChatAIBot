@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct ChatGPT3View: View {
     @ObservedObject var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
     
     @FocusState private var isTextFieldFocused // Checks if user is typing to bring up keyboard
+    @State private var isTextCopied = false // Check if text copied to clipboard
+
     @Namespace var bottomID // ID of bottom anchor Spacer of ScrollView for auto-scrolling
     
     var body: some View {
@@ -34,6 +37,14 @@ struct ChatGPT3View: View {
                     }
                 }
             }
+            .toast(isPresenting: $isTextCopied) {
+                // Alert indicates if message is copied to clipboard
+                AlertToast(
+                    displayMode: .hud,
+                    type: .regular,
+                    title: "Message Copied"
+                )
+            }
             .padding(.top, 1)
             .navigationTitle("Chat AI")
             .navigationBarTitleDisplayMode(.inline)
@@ -49,6 +60,12 @@ struct ChatGPT3View: View {
                 VStack {
                     ForEach(chatViewModel.messages) { message in
                         MessageView(message: message)
+                            // Double tap message to copy to clipboard
+                            .onTapGesture(count: 2) {
+                                let clipboard = UIPasteboard.general
+                                clipboard.string = message.content
+                                isTextCopied.toggle()
+                            }
                     }
                     .padding(.horizontal)
                     

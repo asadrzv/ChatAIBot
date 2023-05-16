@@ -41,6 +41,6 @@ struct MessageView: View {
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageView(message: Constants.sampleImageMessage)
+        MessageView(message: Constants.sampleTextMessage)
     }
 }
