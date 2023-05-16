@@ -34,7 +34,11 @@ class ChatViewModel: ObservableObject {
         self.messageCount += 1 // Separately increment message count for auto-scroll animation
         
         // Get OpenAI Chat Bot response to user message
-        // Add response to list of messages
+        getResponse()
+    }
+    
+    // Get OpenAI Chat Bot response to user message
+    private func getResponse() {
         openAIService.sendCompletion(text: messageText) { result in
             switch result {
             case .success(let response):
@@ -42,6 +46,7 @@ class ChatViewModel: ObservableObject {
                 let formattedResponse = response.trimmingCharacters(in: .whitespacesAndNewlines)
                 let chatBotMessage = Message(text: formattedResponse, isUserMessage: false)
                 
+                // Add response to list of messages
                 DispatchQueue.main.async {
                     self.messages.append(chatBotMessage)
                     self.messageCount += 1
