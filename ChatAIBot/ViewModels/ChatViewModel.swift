@@ -11,6 +11,7 @@ class ChatViewModel: ObservableObject {
     private let openAIService: OpenAIService
     
     @Published var messages = [Message]()
+    @Published var messageText = ""
     @Published var messageCount = 0
     
     init(openAIService: OpenAIService) {
@@ -22,10 +23,25 @@ class ChatViewModel: ObservableObject {
         messages = [Message]()
         messageCount = 0
     }
+    
+    // MARK: - Action Handlers
+    
+    // Send message to get GPT-3 completion
+    func sendGPT3Message() {
+        sendMessage(content: messageText, type: .text)
+    }
+    
+    // Send message to get DALL-E image data
+    func sendDALLEMessage() {
+        sendMessage(content: messageText, type: .image)
+    }
+    
+    // MARK: - Functions to get GPT-3 completion and DALL-E image data
         
     // Send message through OpenAI client and append it to the list of messages
     func sendMessage(content: String, type: Message.MessageType) {
         addUserMessage(text: content)
+        messageText = ""
         
         switch type {
         case .text:
