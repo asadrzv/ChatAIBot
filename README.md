@@ -1,14 +1,22 @@
 # Chat AI Bot
 
-This is a basic iOS SwiftUI chat AI bot made using the [OpenAI HTTP API](https://platform.openai.com/docs/api-reference) and the [OpenAISwift Wrapper Library](https://github.com/adamrushy/OpenAISwift).
-
-Time spent: **2** hours spent in total
+This is a basic iOS SwiftUI MVVM Chat AI bot made using the [OpenAI HTTP API](https://platform.openai.com/docs/api-reference) and the [OpenAISwift Wrapper Library](https://github.com/adamrushy/OpenAISwift). The user enter a prompt and recieve either a predicted completion response (GPT-3) or a generated image (DALL-E).
 
 ## User Stories
 
 The following functionality is completed:
 
-- [x] User can chat with OpenAI's ChatGPT bot
+- [x] User is greeted by a demo image/text indicating how to use each AI bot
+- [x] User can switch tabs to access Chat AI (GPT-3) and Image AI (DALL-E)
+- [x] User can enter a prompt and Chat AI will predict a response
+- [x] User can enter a prompt and Image AI will generate an image
+- [x] User can copy messages to their clipboard
+- [x] User can clear all chat messages
+
+## 3rd Party Libraries
+* [OpenAI HTTP API](https://platform.openai.com/docs/api-reference)
+* [OpenAISwift Wrapper Library](https://github.com/adamrushy/OpenAISwift)
+* [AlertToast](https://github.com/elai950/AlertToast)
 
 ## Video Walkthrough
 

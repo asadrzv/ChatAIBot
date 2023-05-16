@@ -35,8 +35,8 @@ struct ChatDALLEView: View {
                 }
             }
             .padding(.top, 1)
-            .navigationTitle("Image AI")
-            .navigationBarTitleDisplayMode(.inline)
+            //.navigationTitle("Image AI")
+            //.navigationBarTitleDisplayMode(.inline)
         }
     }
     
