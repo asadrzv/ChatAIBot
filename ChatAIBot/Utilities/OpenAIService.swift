@@ -12,5 +12,8 @@ import Foundation
 protocol OpenAIService {
     
     // Predict completion text for input text
-    func sendCompletion(text: String, completion: @escaping (Result<String, Error>) -> Void)
+    func sendCompletion(prompt: String, completion: @escaping (Result<String, Error>) -> Void)
+    
+    // Generate image url based on input prompt
+    func sendImages(prompt: String, completion: @escaping (Result<String, Error>) -> Void)
 }

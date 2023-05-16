@@ -13,15 +13,23 @@ struct MessageView: View {
     var body: some View {
         HStack {
             ZStack {
-                // Message text content
-                Text(message.text)
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
-                    // Set message bubble color to blue (received) or gray (sent)
-                    .background(message.isUserMessage ? .blue.opacity(0.9) : .gray.opacity(0.3))
-                    // Set message text to white (received) or black (sent)
-                    .foregroundColor(message.isUserMessage ? .white : .black)
-                    .cornerRadius(10)
+                VStack {
+                    switch message.type {
+                    // Message text content
+                    case .text:
+                        Text(message.content)
+                    // Message image content
+                    case .image:
+                        ImageView(imageUrl: message.content, dimensions: 200)
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+                // Set message bubble color to blue (received) or gray (sent)
+                .background(message.isUserMessage ? .blue.opacity(0.9) : .gray.opacity(0.3))
+                // Set message text to white (received) or black (sent)
+                .foregroundColor(message.isUserMessage ? .white : .black)
+                .cornerRadius(10)
             }
             .frame(width: 500 * 0.7, alignment: message.isUserMessage ? .trailing : .leading)
             .padding(.vertical, 15)
@@ -29,10 +37,34 @@ struct MessageView: View {
         // Align message to left (received) or right (sent)
         .frame(maxWidth: .infinity, alignment: message.isUserMessage ? .trailing : .leading)
     }
+    
+    // MARK: - Custom Views
+
+    // Message text view
+    /*private var MessageTextView: some View {
+        Text(message.content)
+            /*.padding(.horizontal)
+            .padding(.vertical, 10)
+            // Set message bubble color to blue (received) or gray (sent)
+            .background(message.isUserMessage ? .blue.opacity(0.9) : .gray.opacity(0.3))
+            // Set message text to white (received) or black (sent)
+            .foregroundColor(message.isUserMessage ? .white : .black)
+            .cornerRadius(10)*/
+    }
+    
+    // Message image view
+    private var MessageImageView: some View {
+        ImageView(imageUrl: message.content, dimensions: 200)
+            /*.padding(.horizontal)
+            .padding(.vertical, 10)
+            // Set message bubble color to blue (received) or gray (sent)
+            .background(message.isUserMessage ? .blue.opacity(0.9) : .gray.opacity(0.3))
+            .cornerRadius(10)*/
+    }*/
 }
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
-        MessageView(message: Constants.sampleMessage)
+        MessageView(message: Constants.sampleImageMessage)
     }
 }

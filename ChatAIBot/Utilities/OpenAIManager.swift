@@ -19,18 +19,36 @@ class OpenAIManager: OpenAIService {
 
     // Predict completion text for user message using OpenAI's GPT-3
     // Return resulting generated response or an error
-    func sendCompletion(text: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func sendCompletion(prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
         openAI.sendCompletion(
-            with: text,
-            model: .gpt3(.davinci),
+            with: prompt,
+            model: .gpt3(.curie),
             maxTokens: 500,
             temperature: 0.4
         ) { result in
             
             switch result {
             case .success(let model):
-                let output = model.choices?.first?.text ?? ""
-                completion(.success(output))
+                let response = model.choices?.first?.text ?? ""
+                completion(.success(response))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    // Generate image url based on input prompt using OpenAI's DALL-E
+    func sendImages(prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
+        openAI.sendImages(
+            with: prompt,
+            numImages: 1,
+            size: .size1024
+        ) { result in
+            
+            switch result {
+            case .success(let model):
+                let imageUrl = model.data?.first?.url ?? ""
+                completion(.success(imageUrl))
             case .failure(let error):
                 completion(.failure(error))
             }

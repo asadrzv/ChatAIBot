@@ -9,9 +9,15 @@ import Foundation
 
 class MockOpenAIManager: OpenAIService {
     
-    // Return test data for testing ChatViewModel sendMessage function
-    func sendCompletion(text: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let testData = "SAMPLE CHATBOT COMPLETION RESPONSE"
+    // Completion returns test data for testing ChatViewModel sendMessage function
+    func sendCompletion(prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let testData = Constants.sampleChatBotResponse
+        completion(.success(testData))
+    }
+    
+    // Completion returns test url for testing
+    func sendImages(prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let testData = Constants.sampleImageUrl
         completion(.success(testData))
     }
 }

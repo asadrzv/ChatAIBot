@@ -23,9 +23,23 @@ class ChatViewModel: ObservableObject {
         messageCount = 0
     }
         
-    // Send message through OpenAI client and append it to the list of models
-    func sendMessage(messageText: String) {
-        let formattedMessageText = messageText.trimmingCharacters(in: .whitespacesAndNewlines)
+    // Send message through OpenAI client and append it to the list of messages
+    func sendMessage(content: String, type: Message.MessageType) {
+        addUserMessage(text: content)
+        
+        switch type {
+        case .text:
+            // Get OpenAI completion response to user prompt
+            getCompletion(prompt: content)
+        case .image:
+            // Get OpenAI DALL-E generated image to user prompt
+            getGeneratedImage(prompt: content)
+        }
+    }
+    
+    // Add user inputted message to list of messages
+    private func addUserMessage(text: String) {
+        let formattedMessageText = text.trimmingCharacters(in: .whitespacesAndNewlines)
 
         // Do not send message if text empty
         guard !formattedMessageText.isEmpty else {
@@ -34,24 +48,40 @@ class ChatViewModel: ObservableObject {
         }
         
         // Add new message sent by user to list of messages
-        let userMessage = Message(text: messageText, isUserMessage: true)
+        let userMessage = Message(content: text, type: .text, isUserMessage: true)
         self.messages.append(userMessage)
         self.messageCount += 1 // Separately increment message count for auto-scroll
-        
-        // Get OpenAI Chat Bot response to user message
-        getResponse(messageText: messageText)
     }
     
     // Get OpenAI Chat Bot response to user message
-    private func getResponse(messageText: String) {
-        openAIService.sendCompletion(text: messageText) { result in
+    private func getCompletion(prompt: String) {
+        openAIService.sendCompletion(prompt: prompt) { result in
             switch result {
             case .success(let response):
                 print("SUCCESS: Successfully retrieved ChatBot response!")
                 let formattedResponse = response.trimmingCharacters(in: .whitespacesAndNewlines)
-                let chatBotMessage = Message(text: formattedResponse, isUserMessage: false)
+                let chatBotMessage = Message(content: formattedResponse, type: .text, isUserMessage: false)
                 
                 // Add response to list of messages
+                DispatchQueue.main.async {
+                    self.messages.append(chatBotMessage)
+                    self.messageCount += 1
+                }
+            case .failure(let error):
+                print("ERROR: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    // Get OpenAI DALL-E image generated from user prompt
+    private func getGeneratedImage(prompt: String) {
+        openAIService.sendImages(prompt: prompt) { result in
+            switch result {
+            case .success(let imageUrl):
+                print("SUCCESS: Successfully retrieved DALL-E image url!")
+                let chatBotMessage = Message(content: imageUrl, type: .image, isUserMessage: false)
+                
+                // Add image to list of messages
                 DispatchQueue.main.async {
                     self.messages.append(chatBotMessage)
                     self.messageCount += 1

@@ -11,6 +11,7 @@
 		2411FDF22A12D8240043D50A /* MockOpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411FDF12A12D8240043D50A /* MockOpenAIManager.swift */; };
 		2411FDF42A12E1BE0043D50A /* ChatViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411FDF32A12E1BE0043D50A /* ChatViewModelTests.swift */; };
 		2411FDF62A1300890043D50A /* MessageModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411FDF52A1300890043D50A /* MessageModelTests.swift */; };
+		2411FDF82A13E7BF0043D50A /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411FDF72A13E7BF0043D50A /* ImageView.swift */; };
 		24DDC1092A0C25830063DC5C /* ChatAIBotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DDC1082A0C25830063DC5C /* ChatAIBotApp.swift */; };
 		24DDC10D2A0C25880063DC5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24DDC10C2A0C25880063DC5C /* Assets.xcassets */; };
 		24DDC1102A0C25880063DC5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24DDC10F2A0C25880063DC5C /* Preview Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		2411FDF12A12D8240043D50A /* MockOpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOpenAIManager.swift; sourceTree = "<group>"; };
 		2411FDF32A12E1BE0043D50A /* ChatViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModelTests.swift; sourceTree = "<group>"; };
 		2411FDF52A1300890043D50A /* MessageModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModelTests.swift; sourceTree = "<group>"; };
+		2411FDF72A13E7BF0043D50A /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		24DDC1052A0C25830063DC5C /* ChatAIBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatAIBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DDC1082A0C25830063DC5C /* ChatAIBotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAIBotApp.swift; sourceTree = "<group>"; };
 		24DDC10C2A0C25880063DC5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			children = (
 				24DDC13B2A0C2E620063DC5C /* ChatView.swift */,
 				24DDC13F2A0C339D0063DC5C /* MessageView.swift */,
+				2411FDF72A13E7BF0043D50A /* ImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2411FDF82A13E7BF0043D50A /* ImageView.swift in Sources */,
 				24DDC13C2A0C2E620063DC5C /* ChatView.swift in Sources */,
 				24DDC13A2A0C2D5A0063DC5C /* OpenAIManager.swift in Sources */,
 				2411FDF22A12D8240043D50A /* MockOpenAIManager.swift in Sources */,

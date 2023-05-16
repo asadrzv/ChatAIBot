@@ -114,7 +114,7 @@ struct ChatView: View {
     // MARK: - Action Handlers
     
     private func handleSendMessage() {
-        chatViewModel.sendMessage(messageText: messageText)
+        chatViewModel.sendMessage(content: messageText, type: .text)
         messageText = ""
     }
 }
