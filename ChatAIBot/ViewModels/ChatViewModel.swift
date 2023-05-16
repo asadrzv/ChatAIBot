@@ -30,7 +30,7 @@ class ChatViewModel: ObservableObject {
         // Add new message sent by user to list of messages
         let userMessage = Message(text: messageText, isUserMessage: true)
         self.messages.append(userMessage)
-        self.messageCount += 1 // Separately increment message count for auto-scroll animation
+        self.messageCount += 1 // Separately increment message count for auto-scroll
         
         // Get OpenAI Chat Bot response to user message
         getResponse(messageText: messageText)
@@ -49,7 +49,6 @@ class ChatViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.messages.append(chatBotMessage)
                     self.messageCount += 1
-                    //self.messageText = ""
                 }
             case .failure(let error):
                 print("ERROR: \(error.localizedDescription)")
