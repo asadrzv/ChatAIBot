@@ -24,6 +24,7 @@ class ChatViewModel: ObservableObject {
     func clearChat() {
         messages = [Message]()
         messageCount = 0
+        messageText = ""
     }
     
     // Send message to get GPT-3 completion
