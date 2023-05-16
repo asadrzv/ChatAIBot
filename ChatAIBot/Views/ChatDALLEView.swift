@@ -35,7 +35,7 @@ struct ChatDALLEView: View {
                 }
             }
             .padding(.top, 1)
-            .navigationTitle("DALL-E")
+            .navigationTitle("Image Bot")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

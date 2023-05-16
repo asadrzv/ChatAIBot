@@ -35,7 +35,7 @@ struct ChatGPT3View: View {
                 }
             }
             .padding(.top, 1)
-            .navigationTitle("GPT-3")
+            .navigationTitle("Chat Bot")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

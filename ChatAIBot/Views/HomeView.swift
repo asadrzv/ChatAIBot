@@ -12,11 +12,11 @@ struct HomeView: View {
         TabView {
             ChatGPT3View()
                 .tabItem {
-                    Label("GPT-3", systemImage: "ellipsis.message")
+                    Label("Chat Bot", systemImage: "ellipsis.message")
                 }
             ChatDALLEView()
                 .tabItem {
-                    Label("DALL-E", systemImage: "theatermask.and.paintbrush")
+                    Label("Image Bot", systemImage: "theatermask.and.paintbrush")
                 }
         }
     }
