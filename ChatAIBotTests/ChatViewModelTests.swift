@@ -1,5 +1,5 @@
 //
-//  MockOpenAIServiceTests.swift
+//  ChatViewModelTests.swift
 //  ChatAIBotTests
 //
 //  Created by Asad Rizvi on 5/15/23.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import ChatAIBot
 
-final class MockOpenAIServiceTests: XCTestCase {
+final class ChatViewModelTests: XCTestCase {
     // Use protocal-driven development and dependency injection to allow testing
     let mockChatViewModel = ChatViewModel(openAIService: MockOpenAIManager())
     
@@ -17,14 +17,12 @@ final class MockOpenAIServiceTests: XCTestCase {
         // Assert no messages saved yet
         XCTAssert(mockChatViewModel.messages.count == 0)
         XCTAssert(mockChatViewModel.messageCount == 0)
-        XCTAssert(mockChatViewModel.messageText == "")
     }
     
     // Test sendMessage function in ChatViewModel
     func testSendMessage() {
         // Simulate user sending single message
-        mockChatViewModel.messageText = "SAMPLE USER MESSAGE"
-        mockChatViewModel.sendMessage()
+        mockChatViewModel.sendMessage(messageText: "SAMPLE USER MESSAGE")
         
         // Assert user message added to list of messages
         XCTAssert(mockChatViewModel.messages[0].text == "SAMPLE USER MESSAGE")

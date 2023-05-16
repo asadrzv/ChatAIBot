@@ -10,6 +10,7 @@ import SwiftUI
 struct ChatView: View {
     @ObservedObject var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
     
+    @State var messageText = ""
     @FocusState private var isTextFieldFocused // Checks if user is typing to bring up keyboard
     @Namespace var bottomID // ID of bottom anchor Spacer of ScrollView for auto-scrolling
     
@@ -75,7 +76,7 @@ struct ChatView: View {
         VStack {
             HStack {
                 // Text field to get user message to send
-                TextField("Message", text: $chatViewModel.messageText)
+                TextField("Message", text: $messageText)
                     .focused($isTextFieldFocused)
                     .lineLimit(4)
                     .padding(.horizontal)
@@ -84,22 +85,29 @@ struct ChatView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                 
                 // Send messsage button
-                Button(action: chatViewModel.sendMessage) {
+                Button(action: handleSendMessage) {
                     Image(systemName: "paperplane.fill")
                         .foregroundColor(.white)
                         .frame(width: 40, height: 40)
                         .background(Circle()
                             // Set send message button to gray (nothing to send) or blue (text to send)
-                            .foregroundColor(chatViewModel.messageText.isEmpty ? .gray : .blue)
+                            .foregroundColor(messageText.isEmpty ? .gray : .blue)
                         )
                 }
-                .disabled(chatViewModel.messageText.isEmpty)
+                .disabled(messageText.isEmpty)
             }
             .frame(height: 40)
         }
         .padding(.vertical)
         .padding(.horizontal)
         .background(.thickMaterial)
+    }
+    
+    // MARK: - Action Handlers
+    
+    private func handleSendMessage() {
+        chatViewModel.sendMessage(messageText: messageText)
+        messageText = ""
     }
 }
 

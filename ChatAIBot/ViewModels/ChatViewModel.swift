@@ -11,7 +11,6 @@ class ChatViewModel: ObservableObject {
     private let openAIService: OpenAIService
     
     @Published var messages = [Message]()
-    @Published var messageText = ""
     @Published var messageCount = 0
     
     init(openAIService: OpenAIService) {
@@ -19,7 +18,7 @@ class ChatViewModel: ObservableObject {
     }
         
     // Send message through OpenAI client and append it to the list of models
-    func sendMessage() {
+    func sendMessage(messageText: String) {
         let formattedMessageText = messageText.trimmingCharacters(in: .whitespacesAndNewlines)
 
         // Do not send message if text empty
@@ -34,11 +33,11 @@ class ChatViewModel: ObservableObject {
         self.messageCount += 1 // Separately increment message count for auto-scroll animation
         
         // Get OpenAI Chat Bot response to user message
-        getResponse()
+        getResponse(messageText: messageText)
     }
     
     // Get OpenAI Chat Bot response to user message
-    private func getResponse() {
+    private func getResponse(messageText: String) {
         openAIService.sendCompletion(text: messageText) { result in
             switch result {
             case .success(let response):
@@ -50,7 +49,7 @@ class ChatViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.messages.append(chatBotMessage)
                     self.messageCount += 1
-                    self.messageText = ""
+                    //self.messageText = ""
                 }
             case .failure(let error):
                 print("ERROR: \(error.localizedDescription)")

@@ -23,8 +23,8 @@ struct MessageView: View {
                     .foregroundColor(message.isUserMessage ? .white : .black)
                     .cornerRadius(10)
             }
-            .frame(width: 450 * 0.7, alignment: message.isUserMessage ? .trailing : .leading)
-            .padding(.vertical)
+            .frame(width: 500 * 0.7, alignment: message.isUserMessage ? .trailing : .leading)
+            .padding(.vertical, 5)
         }
         // Align message to left (received) or right (sent)
         .frame(maxWidth: .infinity, alignment: message.isUserMessage ? .trailing : .leading)
