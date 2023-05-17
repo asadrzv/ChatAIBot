@@ -100,7 +100,7 @@ struct ChatGPT3View: View {
         VStack {
             HStack {
                 // Text field to get user message to send
-                TextField("Message", text: $chatViewModel.messageText)
+                TextField("Message", text: $chatViewModel.messageText, axis: .vertical)
                     .focused($isTextFieldFocused)
                     .lineLimit(4)
                     .padding(.horizontal)
