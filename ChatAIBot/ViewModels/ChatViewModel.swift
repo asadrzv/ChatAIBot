@@ -78,7 +78,7 @@ class ChatViewModel: ObservableObject {
                 print("SUCCESS: Successfully retrieved ChatBot response!")
                 var formattedResponse = response.trimmingCharacters(in: .whitespacesAndNewlines)
                 
-                // Check if response is empty string
+                // Send error message as response if response is empty string
                 if formattedResponse.isEmpty {
                     formattedResponse = "I'm sorry 😢, I couldn't quite understand that. Try rephrasing your request as a statement or question."
                 }

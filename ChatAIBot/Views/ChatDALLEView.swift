@@ -91,7 +91,10 @@ struct ChatDALLEView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                 
                 // Send messsage button
-                Button(action: chatViewModel.sendDALLEMessage) {
+                Button(action: {
+                    chatViewModel.sendDALLEMessage()
+                    isTextFieldFocused.toggle()
+                }) {
                     Image(systemName: "paperplane.fill")
                         .foregroundColor(.white)
                         .frame(width: 40, height: 40)

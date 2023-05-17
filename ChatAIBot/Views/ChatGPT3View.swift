@@ -108,7 +108,10 @@ struct ChatGPT3View: View {
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                 
                 // Send messsage button
-                Button(action: chatViewModel.sendGPT3Message) {
+                Button(action: {
+                    chatViewModel.sendGPT3Message()
+                    isTextFieldFocused.toggle()
+                }) {
                     Image(systemName: "paperplane.fill")
                         .foregroundColor(.white)
                         .frame(width: 40, height: 40)

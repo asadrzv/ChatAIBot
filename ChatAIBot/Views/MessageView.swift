@@ -31,6 +31,7 @@ struct MessageView: View {
                         ImageView(imageUrl: message.content, dimensions: 300)
                             .padding(.horizontal)
                             .padding(.vertical, 10)
+                            .background(.gray.opacity(0.3))
                     }
                 }
                 .cornerRadius(10)
@@ -45,8 +46,9 @@ struct MessageView: View {
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
+        // Text Message
         MessageView(message: Constants.sampleTextMessage)
-        
+        // Image Message
         MessageView(message: Constants.sampleImageMessage)
     }
 }
