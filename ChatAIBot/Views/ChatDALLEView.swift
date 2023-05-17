@@ -97,10 +97,10 @@ struct ChatDALLEView: View {
                         .frame(width: 40, height: 40)
                         .background(Circle()
                             // Set send message button to gray (nothing to send) or red (text to send)
-                            .foregroundColor(chatViewModel.messageText.isEmpty ? .gray : .red.opacity(0.9))
+                            .foregroundColor(chatViewModel.formattedMessageText.isEmpty ? .gray : .red.opacity(0.9))
                         )
                 }
-                .disabled(chatViewModel.messageText.isEmpty)
+                .disabled(chatViewModel.formattedMessageText.isEmpty)
             }
         }
         .padding(.vertical)

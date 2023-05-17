@@ -14,6 +14,10 @@ class ChatViewModel: ObservableObject {
     @Published var messageText = ""
     @Published var messageCount = 0
     
+    var formattedMessageText: String {
+        return messageText.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
     init(openAIService: OpenAIService) {
         self.openAIService = openAIService
     }
@@ -40,7 +44,7 @@ class ChatViewModel: ObservableObject {
     // MARK: - Functions to get OpenAI response and store in message list
         
     // Send message through OpenAI client and append it to the list of messages
-    func sendMessage(content: String, type: Message.MessageType) {
+    func sendMessage(content: String, type: Message.MessageType) { 
         addUserMessage(text: content)
         messageText = ""
         
@@ -56,15 +60,6 @@ class ChatViewModel: ObservableObject {
     
     // Add user inputted message to list of messages
     private func addUserMessage(text: String) {
-        let formattedMessageText = text.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        // Do not send message if text empty
-        guard !formattedMessageText.isEmpty else {
-            print("ERROR: Message text empty!")
-            return
-        }
-        
-        // Add new message sent by user to list of messages
         let userMessage = Message(content: text, type: .text, isUserMessage: true)
         self.messages.append(userMessage)
         self.messageCount += 1 // Separately increment message count for auto-scroll
@@ -78,7 +73,13 @@ class ChatViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 print("SUCCESS: Successfully retrieved ChatBot response!")
-                let formattedResponse = response.trimmingCharacters(in: .whitespacesAndNewlines)
+                var formattedResponse = response.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                // Check if response is empty string
+                if formattedResponse.isEmpty {
+                    formattedResponse = "I'm sorry 😢! I couldn't quite understand that. Make sure you phrase your request as a statement or question."
+                }
+                
                 let chatBotMessage = Message(content: formattedResponse, type: .text, isUserMessage: false)
                 
                 // Add response to list of messages
@@ -97,7 +98,7 @@ class ChatViewModel: ObservableObject {
         openAIService.sendImages(prompt: prompt) { result in
             switch result {
             case .success(let imageUrl):
-                print("SUCCESS: Successfully retrieved DALL-E image url!")
+                print("SUCCESS: Successfully retrieved DALL-E image url! \(imageUrl)")
                 let chatBotMessage = Message(content: imageUrl, type: .image, isUserMessage: false)
                 
                 // Add image to list of messages

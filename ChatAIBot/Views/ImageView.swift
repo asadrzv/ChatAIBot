@@ -26,7 +26,6 @@ struct ImageView: View {
                 ProgressView()
                     .frame(width: dimensions, height: dimensions)
                     .background(.thinMaterial)
-                    .clipShape(Circle())
             // Valid image
             case .success(let image):
                 image
