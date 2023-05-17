@@ -44,17 +44,20 @@ class ChatViewModel: ObservableObject {
     // MARK: - Functions to get OpenAI response and store in message list
         
     // Send message through OpenAI client and append it to the list of messages
-    func sendMessage(content: String, type: Message.MessageType) { 
-        addUserMessage(text: content)
+    func sendMessage(content: String, type: Message.MessageType) {
+        // Remove leading whitespace and newlines from message before sending it
+        let formattedMessageText = content.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        addUserMessage(text: formattedMessageText)
         messageText = ""
         
         switch type {
         case .text:
             // Get OpenAI completion response to user prompt
-            getCompletion(prompt: content)
+            getCompletion(prompt: formattedMessageText)
         case .image:
             // Get OpenAI DALL-E generated image to user prompt
-            getGeneratedImage(prompt: content)
+            getGeneratedImage(prompt: formattedMessageText)
         }
     }
     
