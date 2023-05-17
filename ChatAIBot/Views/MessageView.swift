@@ -23,7 +23,7 @@ struct MessageView: View {
                             .padding(.horizontal)
                             .padding(.vertical, 10)
                             // Set message bubble color to blue (received) or gray (sent)
-                            .background(message.isUserMessage ? .red.opacity(0.7) : .gray.opacity(0.3))
+                            .background(message.isUserMessage ? .red.opacity(0.7) : .gray.opacity(0.2))
                             // Set message text to white (received) or black (sent)
                             .foregroundColor(message.isUserMessage ? .white : .black)
                     // Message image content
@@ -31,7 +31,7 @@ struct MessageView: View {
                         ImageView(imageUrl: message.content, dimensions: 300)
                             .padding(.horizontal)
                             .padding(.vertical, 10)
-                            .background(.gray.opacity(0.3))
+                            .background(.gray.opacity(0.2))
                     }
                 }
                 .cornerRadius(10)
