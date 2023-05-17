@@ -80,7 +80,7 @@ class ChatViewModel: ObservableObject {
                 
                 // Check if response is empty string
                 if formattedResponse.isEmpty {
-                    formattedResponse = "I'm sorry 😢! I couldn't quite understand that. Make sure you phrase your request as a statement or question."
+                    formattedResponse = "I'm sorry 😢, I couldn't quite understand that. Try rephrasing your request as a statement or question."
                 }
                 
                 let chatBotMessage = Message(content: formattedResponse, type: .text, isUserMessage: false)
