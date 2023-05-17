@@ -34,6 +34,7 @@ struct ChatGPT3View: View {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button(action: chatViewModel.clearChat) {
                         Text("Clear")
+                            .foregroundColor(.black)
                     }
                 }
             }
@@ -46,8 +47,6 @@ struct ChatGPT3View: View {
                 )
             }
             .padding(.top, 1)
-            //.navigationTitle("Chat AI")
-            //.navigationBarTitleDisplayMode(.inline)
         }
     }
     
@@ -102,10 +101,10 @@ struct ChatGPT3View: View {
                 // Text field to get user message to send
                 TextField("Message", text: $chatViewModel.messageText, axis: .vertical)
                     .focused($isTextFieldFocused)
-                    .lineLimit(4)
+                    .lineLimit(3)
                     .padding(.horizontal)
-                    .frame(height: 40)
-                    .background(.white)
+                    .padding(.vertical)
+                    .background(.thickMaterial)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                 
                 // Send messsage button
@@ -114,17 +113,15 @@ struct ChatGPT3View: View {
                         .foregroundColor(.white)
                         .frame(width: 40, height: 40)
                         .background(Circle()
-                            // Set send message button to gray (nothing to send) or blue (text to send)
-                            .foregroundColor(chatViewModel.messageText.isEmpty ? .gray : .blue)
+                            // Set send message button to gray (nothing to send) or red (text to send)
+                            .foregroundColor(chatViewModel.messageText.isEmpty ? .gray : .red.opacity(0.9))
                         )
                 }
                 .disabled(chatViewModel.messageText.isEmpty)
             }
-            .frame(height: 40)
         }
         .padding(.vertical)
         .padding(.horizontal)
-        .background(.thickMaterial)
     }
 }
 

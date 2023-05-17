@@ -20,19 +20,19 @@ struct MessageView: View {
                         Text(message.content)
                     // Message image content
                     case .image:
-                        ImageView(imageUrl: message.content, dimensions: 200)
+                        ImageView(imageUrl: message.content, dimensions: 300)
                     }
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 10)
                 // Set message bubble color to blue (received) or gray (sent)
-                .background(message.isUserMessage ? .blue.opacity(0.9) : .gray.opacity(0.3))
+                .background(message.isUserMessage ? .red.opacity(0.7) : .gray.opacity(0.3))
                 // Set message text to white (received) or black (sent)
                 .foregroundColor(message.isUserMessage ? .white : .black)
                 .cornerRadius(10)
             }
             .frame(width: 500 * 0.7, alignment: message.isUserMessage ? .trailing : .leading)
-            .padding(.vertical, 15)
+            .padding(.vertical, 5)
         }
         // Align message to left (received) or right (sent)
         .frame(maxWidth: .infinity, alignment: message.isUserMessage ? .trailing : .leading)

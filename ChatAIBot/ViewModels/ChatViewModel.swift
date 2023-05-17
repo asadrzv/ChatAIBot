@@ -37,7 +37,7 @@ class ChatViewModel: ObservableObject {
         sendMessage(content: messageText, type: .image)
     }
     
-    // MARK: - Functions to get GPT-3 completion and DALL-E image data
+    // MARK: - Functions to get OpenAI response and store in message list
         
     // Send message through OpenAI client and append it to the list of messages
     func sendMessage(content: String, type: Message.MessageType) {
@@ -69,6 +69,8 @@ class ChatViewModel: ObservableObject {
         self.messages.append(userMessage)
         self.messageCount += 1 // Separately increment message count for auto-scroll
     }
+    
+    // MARK: - Functions to get GPT-3 completion and DALL-E image data
     
     // Get OpenAI Chat Bot response to user message
     private func getCompletion(prompt: String) {
