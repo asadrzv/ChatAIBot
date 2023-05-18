@@ -10,6 +10,7 @@ import SwiftUI
 struct MessagesView: View {
     @StateObject var chatViewModel: ChatViewModel
     
+    @State var clipboard = UIPasteboard.general
     @Binding var isTextCopied: Bool // Toggle to show Toast alert on ChatAI/ImageAI views
     
     @Namespace private var bottomID // ID of bottom anchor Spacer of ScrollView for auto-scrolling
@@ -22,7 +23,6 @@ struct MessagesView: View {
                         MessageView(message: message)
                             // Double tap message to copy to clipboard
                             .onTapGesture(count: 2) {
-                                let clipboard = UIPasteboard.general
                                 clipboard.string = message.content
                                 isTextCopied.toggle()
                             }
@@ -44,11 +44,11 @@ struct MessagesView: View {
     }
 }
 
-/*struct MessagesView_Previews: PreviewProvider {
+struct MessagesView_Previews: PreviewProvider {
     static var previews: some View {
         MessagesView(
             chatViewModel: ChatViewModel(openAIService: MockOpenAIManager()),
-            isTextCopied: false
+            isTextCopied: .constant(false)
         )
     }
-}*/
+}
