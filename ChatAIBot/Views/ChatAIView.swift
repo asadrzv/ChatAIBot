@@ -29,7 +29,10 @@ struct ChatAIView: View {
                         IntroView
                     } else {
                         // Empty chat view message/image
-                        PlaceholderView
+                        EmptyChatView(
+                            systemImageName: "ellipsis.message",
+                            text: "Ask me anything..."
+                        )
                     }
                 }
                 // Botoom tool bar view to type/send new message
@@ -97,18 +100,6 @@ struct ChatAIView: View {
         }
     }
     
-    // Empty chat placeholder message/image
-    private var PlaceholderView: some View {
-        VStack {
-            Image(systemName: "ellipsis.message")
-                .font(.largeTitle)
-            Text("Ask me anything...")
-                .font(.subheadline)
-                .padding(10)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-    
     // Introductory text explaining Chat AI to user
     private var IntroView: some View {
         ScrollView {
@@ -165,7 +156,7 @@ struct ChatAIView: View {
     }
 }
 
-struct ChatView_Previews: PreviewProvider {
+struct ChatAIView_Previews: PreviewProvider {
     static var previews: some View {
         ChatAIView()
     }

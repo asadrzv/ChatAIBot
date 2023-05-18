@@ -22,7 +22,10 @@ struct ImageAIView: View {
                     MessagesView
                 } else {
                     // Empty chat view message/image
-                    PlaceholderView
+                    EmptyChatView(
+                        systemImageName: "theatermask.and.paintbrush",
+                        text: "Give me a prompt, I'll draw..."
+                    )
                 }
                 // Botoom tool bar view to type/send new message
                 BottomToolBarView
@@ -72,18 +75,6 @@ struct ImageAIView: View {
         }
     }
     
-    // Empty chat placeholder message/image
-    private var PlaceholderView: some View {
-        VStack {
-            Image(systemName: "theatermask.and.paintbrush")
-                .font(.largeTitle)
-            Text("Give me a prompt, I'll draw...")
-                .font(.subheadline)
-                .padding(10)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-    
     // Botoom tool bar view to type/send new message
     private var BottomToolBarView: some View {
         VStack {
@@ -116,7 +107,7 @@ struct ImageAIView: View {
     }
 }
 
-struct ChatDALLEView_Previews: PreviewProvider {
+struct ImageAIView_Previews: PreviewProvider {
     static var previews: some View {
         ImageAIView()
     }
