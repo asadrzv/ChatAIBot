@@ -23,6 +23,15 @@ struct Constants {
         isUserMessage: true
     )
     
+    // Intro messages to be shown on app launch
+    static let introMessages = [
+        Message(content: "What exactly is ChatAI?", type: .text, isUserMessage: true),
+        Message(content: "ChatAI 💬 is the next-gen tool here to skyrocket 🚀 your productivity 📋 and keep you on track for success 📈", type: .text, isUserMessage: false),
+        Message(content: "But what does it actually do?", type: .text, isUserMessage: true),
+        Message(content: "ChatAI 😎 can do almost anything, from writing those pesky work emails ✉️ to helping you out with HW 📚", type: .text, isUserMessage: false),
+        Message(content: "Really?! That's so cool! Let me try...", type: .text, isUserMessage: true),
+    ]
+    
     // Sample user text message
     static let samleUserPrompt = "SAMPLE USER MESSAGE"
     

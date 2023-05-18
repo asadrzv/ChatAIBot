@@ -11,9 +11,10 @@ import AlertToast
 struct ChatGPT3View: View {
     @ObservedObject var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
     
-    @FocusState private var isTextFieldFocused // Checks if user is typing to bring up keyboard
-    @State private var isTextCopied = false // Check if text copied to clipboard
-
+    @FocusState private var isTextFieldFocused
+    @State private var isTextCopied = false
+    @State private var isIntroViewShowing = true
+    
     @Namespace var bottomID // ID of bottom anchor Spacer of ScrollView for auto-scrolling
     
     var body: some View {
@@ -23,8 +24,13 @@ struct ChatGPT3View: View {
                     // Chat messsage bubbles with auto scroll to latest messge
                     MessagesView
                 } else {
-                    // Empty chat view message/image
-                    PlaceholderView
+                    if isIntroViewShowing {
+                        // Intro view shown on first launch
+                        IntroView
+                    } else {
+                        // Empty chat view message/image
+                        PlaceholderView
+                    }
                 }
                 // Botoom tool bar view to type/send new message
                 BottomToolBarView
@@ -32,13 +38,22 @@ struct ChatGPT3View: View {
             .toolbar {
                 // Clear chat button
                 ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Button(action: chatViewModel.clearChat) {
+                    Button(action: {
+                        chatViewModel.clearChat()
+                        isIntroViewShowing = false
+                    }) {
                         Text("Clear")
                             .foregroundColor(.black)
+                            .padding(.horizontal, 15)
+                            .padding(.vertical, 10)
+                            .background(.thickMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
                     }
                 }
             }
             .padding(.top, 1)
+            .navigationTitle("Chat AI")
+            .navigationBarTitleDisplayMode(.inline)
         }
         .toast(isPresenting: $isTextCopied) {
             // Alert indicates if message is copied to clipboard
@@ -92,6 +107,30 @@ struct ChatGPT3View: View {
                 .padding(10)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    // Introductory text explaining Chat AI to user
+    private var IntroView: some View {
+        ScrollView {
+            ForEach(Constants.introMessages[0...1]) { message in
+                MessageView(message: message)
+            }
+            .padding(.horizontal)
+            
+            VStack {
+                Image(systemName: "ellipsis.message")
+                    .font(.largeTitle)
+                    .padding(.top, 10)
+                Text("Ask me anything...")
+                    .font(.subheadline)
+                    .padding(10)
+            }
+            
+            ForEach(Constants.introMessages[2...4]) { message in
+                MessageView(message: message)
+            }
+            .padding(.horizontal)
+        }
     }
     
     // Botoom tool bar view to type/send new message

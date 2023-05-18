@@ -10,7 +10,8 @@ import SwiftUI
 struct ChatDALLEView: View {
     @ObservedObject var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
     
-    @FocusState private var isTextFieldFocused // Checks if user is typing to bring up keyboard
+    @FocusState private var isTextFieldFocused
+    
     @Namespace var bottomID // ID of bottom anchor Spacer of ScrollView for auto-scrolling
     
     var body: some View {
@@ -32,10 +33,16 @@ struct ChatDALLEView: View {
                     Button(action: chatViewModel.clearChat) {
                         Text("Clear")
                             .foregroundColor(.black)
+                            .padding(.horizontal, 15)
+                            .padding(.vertical, 10)
+                            .background(.thickMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
                     }
                 }
             }
             .padding(.top, 1)
+            .navigationTitle("Image AI")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
     
