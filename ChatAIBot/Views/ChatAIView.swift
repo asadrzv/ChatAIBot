@@ -74,8 +74,8 @@ struct ChatAIView: View {
                 VStack {
                     ForEach(chatViewModel.messages) { message in
                         MessageView(message: message)
-                            // Tap message to copy to clipboard
-                            .onTapGesture(count: 1) {
+                            // Double tap message to copy to clipboard
+                            .onTapGesture(count: 2) {
                                 let clipboard = UIPasteboard.general
                                 clipboard.string = message.content
                                 isTextCopied.toggle()
