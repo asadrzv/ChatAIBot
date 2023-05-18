@@ -74,8 +74,8 @@ struct ChatGPT3View: View {
                 VStack {
                     ForEach(chatViewModel.messages) { message in
                         MessageView(message: message)
-                            // Double tap message to copy to clipboard
-                            .onTapGesture(count: 2) {
+                            // Tap message to copy to clipboard
+                            .onTapGesture(count: 1) {
                                 let clipboard = UIPasteboard.general
                                 clipboard.string = message.content
                                 isTextCopied.toggle()
