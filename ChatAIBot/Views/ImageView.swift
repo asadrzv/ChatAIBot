@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageView: View {
     let imageUrl: String
-    let dimensions: Double
+    let dimensions: Double // REPLACE HARDCODED DIMENSIONS WITH DYNAMIC SIZING
     
     init(imageUrl: String, dimensions: Double) {
         self.imageUrl = imageUrl
