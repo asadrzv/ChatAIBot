@@ -14,15 +14,16 @@ struct ChatAIView: View {
     @FocusState private var isTextFieldFocused
     @State private var isTextCopied = false
     @State private var isFirstLaunch = true
-    
-    @Namespace private var bottomID // ID of bottom anchor Spacer of ScrollView for auto-scrolling
-    
+        
     var body: some View {
         NavigationStack {
             VStack {
                 if !chatViewModel.messages.isEmpty {
                     // Chat messsage bubbles with auto scroll to latest message
-                    MessagesView
+                    MessagesView(
+                        chatViewModel: chatViewModel,
+                        isTextCopied: $isTextCopied
+                    )
                 } else {
                     if isFirstLaunch {
                         // Intro view shown on first launch
@@ -69,36 +70,6 @@ struct ChatAIView: View {
     }
     
     // MARK: - Custom Views
-    
-    // Chat messsage bubbles with auto scroll to latest messge
-    private var MessagesView: some View {
-        ScrollView {
-            ScrollViewReader { scrollViewProxy in
-                VStack {
-                    ForEach(chatViewModel.messages) { message in
-                        MessageView(message: message)
-                            // Double tap message to copy to clipboard
-                            .onTapGesture(count: 2) {
-                                let clipboard = UIPasteboard.general
-                                clipboard.string = message.content
-                                isTextCopied.toggle()
-                            }
-                    }
-                    .padding(.horizontal)
-                    
-                    // Empty spacer at bottom of view to auto scroll to
-                    Spacer()
-                        .id(bottomID)
-                }
-                // Auto scroll to latest chat message when message count increases
-                .onReceive(chatViewModel.$messageCount) { _ in
-                    withAnimation(.easeOut(duration: 0.5)) {
-                        scrollViewProxy.scrollTo(bottomID, anchor: .bottom)
-                    }
-                }
-            }
-        }
-    }
     
     // Introductory text explaining Chat AI to user
     private var IntroView: some View {

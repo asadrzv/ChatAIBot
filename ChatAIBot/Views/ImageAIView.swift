@@ -6,20 +6,23 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct ImageAIView: View {
     @ObservedObject private var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
     
     @FocusState private var isTextFieldFocused
-    
-    @Namespace private var bottomID // ID of bottom anchor Spacer of ScrollView for auto-scrolling
-    
+    @State private var isTextCopied = false
+        
     var body: some View {
         NavigationStack {
             VStack {
                 if !chatViewModel.messages.isEmpty {
                     // Chat messsage bubbles with auto scroll to latest messge
-                    MessagesView
+                    MessagesView(
+                        chatViewModel: chatViewModel,
+                        isTextCopied: $isTextCopied
+                    )
                 } else {
                     // Empty chat view message/image
                     EmptyChatView(
@@ -47,33 +50,17 @@ struct ImageAIView: View {
             .navigationTitle("Image AI")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .toast(isPresenting: $isTextCopied) {
+            // Alert indicates if message is copied to clipboard
+            AlertToast(
+                displayMode: .hud,
+                type: .regular,
+                title: "Message Copied"
+            )
+        }
     }
     
     // MARK: - Custom Views
-    
-    // Chat messsage bubbles with auto scroll to latest messge
-    private var MessagesView: some View {
-        ScrollView {
-            ScrollViewReader { scrollViewProxy in
-                VStack {
-                    ForEach(chatViewModel.messages) { message in
-                        MessageView(message: message)
-                    }
-                    .padding(.horizontal)
-                    
-                    // Empty spacer at bottom of view to auto scroll to
-                    Spacer()
-                        .id(bottomID)
-                }
-                // Auto scroll to latest chat message when message count increases
-                .onReceive(chatViewModel.$messageCount) { _ in
-                    withAnimation(.easeOut(duration: 0.5)) {
-                        scrollViewProxy.scrollTo(bottomID, anchor: .bottom)
-                    }
-                }
-            }
-        }
-    }
     
     // Botoom tool bar view to type/send new message
     private var BottomToolBarView: some View {
