@@ -9,13 +9,13 @@ import SwiftUI
 
 struct EmptyChatView: View {
     let systemImageName: String
-    let text: String
+    let placeholderText: String
     
     var body: some View {
         VStack {
             Image(systemName: systemImageName)
                 .font(.largeTitle)
-            Text(text)
+            Text(placeholderText)
                 .font(.subheadline)
                 .padding(10)
         }
@@ -25,6 +25,9 @@ struct EmptyChatView: View {
 
 struct EmptyChatView_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyChatView(systemImageName: "theatermask.and.paintbrush", text: "Sample text")
+        EmptyChatView(
+            systemImageName: "theatermask.and.paintbrush",
+            placeholderText: "Sample text"
+        )
     }
 }

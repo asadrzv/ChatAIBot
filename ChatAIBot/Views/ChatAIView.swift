@@ -32,7 +32,7 @@ struct ChatAIView: View {
                         // Empty chat view message/image
                         EmptyChatView(
                             systemImageName: "ellipsis.message",
-                            text: "Ask me anything..."
+                            placeholderText: "Ask me anything..."
                         )
                     }
                 }

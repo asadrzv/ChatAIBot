@@ -27,7 +27,7 @@ struct ImageAIView: View {
                     // Empty chat view message/image
                     EmptyChatView(
                         systemImageName: "theatermask.and.paintbrush",
-                        text: "Give me a prompt, I'll draw..."
+                        placeholderText: "Give me a prompt, I'll draw..."
                     )
                 }
                 // Botoom tool bar view to type/send new message
