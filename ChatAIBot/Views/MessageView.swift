@@ -9,9 +9,7 @@ import SwiftUI
 
 struct MessageView: View {
     let message: Message
-    
-    private let width: CGFloat = 500
-    
+        
     var body: some View {
         HStack {
             ZStack {
@@ -20,8 +18,7 @@ struct MessageView: View {
                     // Message text content
                     case .text:
                         Text(message.content)
-                            .padding(.horizontal)
-                            .padding(.vertical, 15)
+                            .padding(15)
                             // Set message bubble color to blue (received) or gray (sent)
                             .background(message.isUserMessage ? .red.opacity(0.7) : .gray.opacity(0.2))
                             // Set message text to white (received) or black (sent)
@@ -29,14 +26,12 @@ struct MessageView: View {
                     // Message image content
                     case .image:
                         ImageView(imageUrl: message.content, dimensions: 300)
-                            .padding(.horizontal)
-                            .padding(.vertical, 15)
+                            .padding(15)
                             .background(.gray.opacity(0.2))
                     }
                 }
                 .cornerRadius(10)
             }
-            .frame(width: width * 0.7, alignment: message.isUserMessage ? .trailing : .leading)
             .padding(.vertical, 5)
         }
         // Align message to left (received) or right (sent)

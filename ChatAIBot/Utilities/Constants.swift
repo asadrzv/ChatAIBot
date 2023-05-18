@@ -11,7 +11,7 @@ struct Constants {
     
     // Sample text message
     static let sampleTextMessage = Message(
-        content: samleUserPrompt,
+        content: sampleUserPrompt,
         type: .text,
         isUserMessage: true
     )
@@ -33,7 +33,7 @@ struct Constants {
     ]
     
     // Sample user text message
-    static let samleUserPrompt = "SAMPLE USER MESSAGE"
+    static let sampleUserPrompt = "SAMPLE USER MESSAGE"
     
     // Sample OpenAI GPT-3 completion response
     static let sampleChatBotResponse = "SAMPLE CHATBOT COMPLETION RESPONSE"

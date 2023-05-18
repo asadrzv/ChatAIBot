@@ -1,5 +1,5 @@
 //
-//  ChatGPT3View.swift
+//  ChatAIView.swift
 //  ChatAIBot
 //
 //  Created by Asad Rizvi on 5/10/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import AlertToast
 
-struct ChatGPT3View: View {
+struct ChatAIView: View {
     @ObservedObject private var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
     
     @FocusState private var isTextFieldFocused
@@ -45,7 +45,7 @@ struct ChatGPT3View: View {
                         Text("Clear")
                             .foregroundColor(.black)
                             .padding(.horizontal, 15)
-                            .padding(.vertical, 10)
+                            .padding(.vertical, 5)
                             .background(.thickMaterial)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                     }
@@ -141,8 +141,7 @@ struct ChatGPT3View: View {
                 TextField("Message", text: $chatViewModel.messageText, axis: .vertical)
                     .focused($isTextFieldFocused)
                     .lineLimit(3)
-                    .padding(.horizontal)
-                    .padding(.vertical)
+                    .padding(15)
                     .background(.thickMaterial)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                 
@@ -153,7 +152,7 @@ struct ChatGPT3View: View {
                 }) {
                     Image(systemName: "paperplane.fill")
                         .foregroundColor(.white)
-                        .frame(width: 40, height: 40)
+                        .padding(15)
                         .background(Circle()
                             // Set send message button to gray (nothing to send) or red (text to send)
                             .foregroundColor(chatViewModel.formattedMessageText.isEmpty ? .gray : .red.opacity(0.9))
@@ -162,13 +161,12 @@ struct ChatGPT3View: View {
                 .disabled(chatViewModel.formattedMessageText.isEmpty)
             }
         }
-        .padding(.vertical)
-        .padding(.horizontal)
+        .padding()
     }
 }
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatGPT3View()
+        ChatAIView()
     }
 }

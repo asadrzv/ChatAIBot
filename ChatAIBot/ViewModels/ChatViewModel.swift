@@ -51,10 +51,8 @@ class ChatViewModel: ObservableObject {
         
         switch type {
         case .text:
-            // Get OpenAI completion response to user prompt
             getCompletion(prompt: content)
         case .image:
-            // Get OpenAI DALL-E generated image to user prompt
             getGeneratedImage(prompt: content)
         }
     }
@@ -63,7 +61,8 @@ class ChatViewModel: ObservableObject {
     private func addUserMessage(text: String) {
         let userMessage = Message(content: text, type: .text, isUserMessage: true)
         self.messages.append(userMessage)
-        self.messageCount += 1 // Separately increment message count for auto-scroll
+        // Separately increment message count for auto-scroll
+        self.messageCount += 1
     }
     
     // MARK: - Functions to get GPT-3 completion and DALL-E image data
@@ -78,7 +77,7 @@ class ChatViewModel: ObservableObject {
                 
                 // Send error message as response if response is empty string
                 if formattedResponse.isEmpty {
-                    formattedResponse = "I'm sorry 😢, I couldn't quite understand that. Try rephrasing your request as a statement or question."
+                    formattedResponse = "I'm sorry 😢, I couldn't quite understand that. Try rephrasing your request as either a statement or question."
                 }
                 
                 let chatBotMessage = Message(content: formattedResponse, type: .text, isUserMessage: false)
@@ -99,7 +98,7 @@ class ChatViewModel: ObservableObject {
         openAIService.sendImages(prompt: prompt) { result in
             switch result {
             case .success(let imageUrl):
-                print("SUCCESS: Successfully retrieved DALL-E image url! \(imageUrl)")
+                print("SUCCESS: Successfully retrieved DALL-E image url!")
                 let chatBotMessage = Message(content: imageUrl, type: .image, isUserMessage: false)
                 
                 // Add image to list of messages

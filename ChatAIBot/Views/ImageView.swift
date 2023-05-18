@@ -32,6 +32,7 @@ struct ImageView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: dimensions, height: dimensions)
+                    .background(.thinMaterial)
             // Error fetching image from url
             case .failure:
                 Text("Error: Failed to fetch image")

@@ -11,11 +11,11 @@ struct HomeView: View {
     
     var body: some View {
         TabView {
-            ChatGPT3View()
+            ChatAIView()
                 .tabItem {
                     Label("Chat AI", systemImage: "ellipsis.message")
                 }
-            ChatDALLEView()
+            ImageAIView()
                 .tabItem {
                     Label("Image AI", systemImage: "theatermask.and.paintbrush")
                 }
