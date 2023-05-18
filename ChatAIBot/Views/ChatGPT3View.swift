@@ -13,7 +13,7 @@ struct ChatGPT3View: View {
     
     @FocusState private var isTextFieldFocused
     @State private var isTextCopied = false
-    @State private var isIntroViewShowing = true
+    @State private var isFirstLaunch = true
     
     @Namespace var bottomID // ID of bottom anchor Spacer of ScrollView for auto-scrolling
     
@@ -21,10 +21,10 @@ struct ChatGPT3View: View {
         NavigationStack {
             VStack {
                 if !chatViewModel.messages.isEmpty {
-                    // Chat messsage bubbles with auto scroll to latest messge
+                    // Chat messsage bubbles with auto scroll to latest message
                     MessagesView
                 } else {
-                    if isIntroViewShowing {
+                    if isFirstLaunch {
                         // Intro view shown on first launch
                         IntroView
                     } else {
@@ -40,7 +40,7 @@ struct ChatGPT3View: View {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button(action: {
                         chatViewModel.clearChat()
-                        isIntroViewShowing = false
+                        isFirstLaunch = false
                     }) {
                         Text("Clear")
                             .foregroundColor(.black)
