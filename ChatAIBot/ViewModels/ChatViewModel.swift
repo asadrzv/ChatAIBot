@@ -14,6 +14,7 @@ class ChatViewModel: ObservableObject {
     @Published var messageText = ""
     @Published var messageCount = 0
     
+    // Remove leading whitespace/newlines from messageText
     var formattedMessageText: String {
         return messageText.trimmingCharacters(in: .whitespacesAndNewlines)
     }
@@ -33,31 +34,28 @@ class ChatViewModel: ObservableObject {
     
     // Send message to get GPT-3 completion
     func sendGPT3Message() {
-        sendMessage(content: messageText, type: .text)
+        sendMessage(content: formattedMessageText, type: .text)
     }
     
     // Send message to get DALL-E image data
     func sendDALLEMessage() {
-        sendMessage(content: messageText, type: .image)
+        sendMessage(content: formattedMessageText, type: .image)
     }
     
     // MARK: - Functions to get OpenAI response and store in message list
         
     // Send message through OpenAI client and append it to the list of messages
     func sendMessage(content: String, type: Message.MessageType) {
-        // Remove leading whitespace and newlines from message before sending it
-        let formattedMessageText = content.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        addUserMessage(text: formattedMessageText)
+        addUserMessage(text: content)
         messageText = ""
         
         switch type {
         case .text:
             // Get OpenAI completion response to user prompt
-            getCompletion(prompt: formattedMessageText)
+            getCompletion(prompt: content)
         case .image:
             // Get OpenAI DALL-E generated image to user prompt
-            getGeneratedImage(prompt: formattedMessageText)
+            getGeneratedImage(prompt: content)
         }
     }
     
