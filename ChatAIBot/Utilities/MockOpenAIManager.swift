@@ -11,7 +11,7 @@ class MockOpenAIManager: OpenAIService {
     
     // Completion returns test data for testing ChatViewModel sendMessage function
     func sendCompletion(prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let testData = Constants.sampleChatBotResponse
+        let testData = Constants.sampleAIResponse
         completion(.success(testData))
     }
     

@@ -10,10 +10,10 @@ import Foundation
 struct Constants {
     
     // Sample user text message
-    static let sampleUserPrompt = "SAMPLE USER MESSAGE"
+    static let sampleUserPrompt = "SAMPLE USER PROMPT"
     
     // Sample OpenAI GPT-3 completion response
-    static let sampleChatBotResponse = "SAMPLE CHATBOT COMPLETION RESPONSE"
+    static let sampleAIResponse = "SAMPLE AI RESPONSE"
 
     // Sample OpenAI DALL-E generated image url
     static let sampleImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"

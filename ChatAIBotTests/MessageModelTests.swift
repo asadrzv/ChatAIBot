@@ -12,10 +12,18 @@ final class MessageModelTests: XCTestCase {
 
     // Test initial message values
     func testInitialValues() {
-        let message = Message(content: "SAMPLE USER MESSAGE", type: .text, isUserMessage: true)
+        let sampleImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+
+        // Simulate creating new text message
+        let textMessage = Message(content: "SAMPLE USER MESSAGE", type: .text, isUserMessage: true)
+        // Assert correct text message field values
+        XCTAssert(textMessage.content == "SAMPLE USER MESSAGE")
+        XCTAssert(textMessage.isUserMessage == true)
         
-        // Assert correct message field values
-        XCTAssert(message.content == "SAMPLE USER MESSAGE")
-        XCTAssert(message.isUserMessage == true)
+        // Simulate creating new image message
+        let imageMessage = Message(content: sampleImageUrl, type: .text, isUserMessage: true)
+        // Assert correct image message field values
+        XCTAssert(imageMessage.content == sampleImageUrl)
+        XCTAssert(imageMessage.isUserMessage == true)
     }
 }
