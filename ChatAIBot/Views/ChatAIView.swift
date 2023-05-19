@@ -9,7 +9,7 @@ import SwiftUI
 import AlertToast
 
 struct ChatAIView: View {
-    @ObservedObject private var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
+    @StateObject private var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
     
     @FocusState private var isTextFieldFocused
     @State private var isTextCopied = false

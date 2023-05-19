@@ -35,10 +35,12 @@ struct ImageView: View {
                     .background(.thinMaterial)
             // Error fetching image from url
             case .failure:
-                Text("Error: Failed to fetch image")
+                Text("⚠️ Oh no! Something went wrong fetching the image 🖼️!")
+                    .frame(width: dimensions, height: dimensions)
+                    .background(.thinMaterial)
             // Error unknown
             @unknown default:
-                Text("Error: Unknown")
+                Text("Not sure what happened 😕. Try restarting the app.")
             }
         }
     }

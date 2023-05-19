@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MessagesView: View {
-    @StateObject var chatViewModel: ChatViewModel
+    @ObservedObject var chatViewModel: ChatViewModel
     
     @State var clipboard = UIPasteboard.general
     @Binding var isTextCopied: Bool // Toggle to show Toast alert on ChatAI/ImageAI views
