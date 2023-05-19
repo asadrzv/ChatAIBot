@@ -18,23 +18,29 @@ struct ChatAIView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if !chatViewModel.messages.isEmpty {
-                    // Chat messsage bubbles with auto scroll to latest message
-                    MessagesView(
-                        chatViewModel: chatViewModel,
-                        isTextCopied: $isTextCopied
-                    )
-                } else {
-                    if isFirstLaunch {
-                        // Intro view shown on first launch
-                        IntroView
-                    } else {
-                        // Empty chat view message/image
-                        EmptyChatView(
-                            systemImageName: "ellipsis.message",
-                            placeholderText: "Ask me anything..."
+                VStack {
+                    if !chatViewModel.messages.isEmpty {
+                        // Chat messsage bubbles with auto scroll to latest message
+                        MessagesView(
+                            chatViewModel: chatViewModel,
+                            isTextCopied: $isTextCopied
                         )
+                    } else {
+                        if isFirstLaunch {
+                            // Intro view shown on first launch
+                            IntroView
+                        } else {
+                            // Empty chat view message/image
+                            EmptyChatView(
+                                systemImageName: "ellipsis.message",
+                                placeholderText: "Ask me anything..."
+                            )
+                        }
                     }
+                }
+                .onTapGesture {
+                    // Dismiss keyboard when user taps outside textfield
+                    dismissKeyboard()
                 }
                 // Botoom tool bar view to type/send new message
                 BottomToolBarView

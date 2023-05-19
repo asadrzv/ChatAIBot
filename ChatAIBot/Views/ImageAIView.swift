@@ -17,18 +17,24 @@ struct ImageAIView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if !chatViewModel.messages.isEmpty {
-                    // Chat messsage bubbles with auto scroll to latest messge
-                    MessagesView(
-                        chatViewModel: chatViewModel,
-                        isTextCopied: $isTextCopied
-                    )
-                } else {
-                    // Empty chat view message/image
-                    EmptyChatView(
-                        systemImageName: "theatermask.and.paintbrush",
-                        placeholderText: "Give me a prompt, I'll draw..."
-                    )
+                VStack {
+                    if !chatViewModel.messages.isEmpty {
+                        // Chat messsage bubbles with auto scroll to latest messge
+                        MessagesView(
+                            chatViewModel: chatViewModel,
+                            isTextCopied: $isTextCopied
+                        )
+                    } else {
+                        // Empty chat view message/image
+                        EmptyChatView(
+                            systemImageName: "theatermask.and.paintbrush",
+                            placeholderText: "Give me a prompt, I'll draw..."
+                        )
+                    }
+                }
+                .onTapGesture {
+                    // Dismiss keyboard when user taps outside textfield
+                    dismissKeyboard()
                 }
                 // Botoom tool bar view to type/send new message
                 BottomToolBarView
