@@ -203,8 +203,8 @@
 		24DDC1382A0C2D470063DC5C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				24DDC1432A0C36220063DC5C /* Constants.swift */,
 				24F9824E2A17345D00E34E8C /* View+Extensions.swift */,
+				24DDC1432A0C36220063DC5C /* Constants.swift */,
 				2411FDEF2A12B6610043D50A /* OpenAIService.swift */,
 				24DDC1392A0C2D5A0063DC5C /* OpenAIManager.swift */,
 				2411FDF12A12D8240043D50A /* MockOpenAIManager.swift */,

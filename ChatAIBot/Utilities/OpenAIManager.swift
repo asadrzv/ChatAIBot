@@ -38,6 +38,7 @@ class OpenAIManager: OpenAIService {
     }
     
     // Generate image url based on input prompt using OpenAI's DALL-E
+    // Return resulting generated image URL or an error
     func sendImages(prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
         openAI.sendImages(
             with: prompt,
