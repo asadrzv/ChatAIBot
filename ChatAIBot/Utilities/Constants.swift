@@ -9,19 +9,26 @@ import Foundation
 
 struct Constants {
     
+    // Sample user text message
+    static let sampleUserPrompt = "SAMPLE USER MESSAGE"
+    
+    // Sample OpenAI GPT-3 completion response
+    static let sampleChatBotResponse = "SAMPLE CHATBOT COMPLETION RESPONSE"
+
+    // Sample OpenAI DALL-E generated image url
+    static let sampleImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+    
+    // Error response text to OpenAI's API returning an error
+    static let errorResponse = "Oh no 😢, I'm having some trouble connecting to the server 🛠️ right now! Try again later, or maybe check out the full version of the app for unlimited 💯 AI access!"
+    
+    // Reponse for when OpenAI returns an empty string
+    static let emptyResponse = "I'm sorry 😅, I couldn't quite understand that. Try rephrasing your request as either a statement or question."
+    
     // Sample text message
-    static let sampleTextMessage = Message(
-        content: sampleUserPrompt,
-        type: .text,
-        isUserMessage: true
-    )
+    static let sampleTextMessage = Message(content: sampleUserPrompt, type: .text, isUserMessage: true)
     
     // Sample image message
-    static let sampleImageMessage = Message(
-        content: sampleImageUrl,
-        type: .image,
-        isUserMessage: true
-    )
+    static let sampleImageMessage = Message(content: sampleImageUrl, type: .image, isUserMessage: false)
     
     // Intro messages to be shown on app launch
     static let introMessages = [
@@ -31,13 +38,4 @@ struct Constants {
         Message(content: "Chat AI 😎 can do almost anything, from writing those pesky work emails ✉️ to helping you out with HW 📚", type: .text, isUserMessage: false),
         Message(content: "Really?! That's so cool! Let me try...", type: .text, isUserMessage: true),
     ]
-    
-    // Sample user text message
-    static let sampleUserPrompt = "SAMPLE USER MESSAGE"
-    
-    // Sample OpenAI GPT-3 completion response
-    static let sampleChatBotResponse = "SAMPLE CHATBOT COMPLETION RESPONSE"
-
-    // Sample OpenAI DALL-E generated image url
-    static let sampleImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
 }

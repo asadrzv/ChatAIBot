@@ -46,7 +46,9 @@ class ChatViewModel: ObservableObject {
         
     // Send message through OpenAI client and append it to the list of messages
     func sendMessage(content: String, type: Message.MessageType) {
-        addUserMessage(text: content)
+        let userMessage = Message(content: content, type: .text, isUserMessage: true)
+        self.messages.append(userMessage)
+        self.messageCount += 1
         messageText = ""
         
         switch type {
@@ -57,17 +59,18 @@ class ChatViewModel: ObservableObject {
         }
     }
     
-    // Add user inputted message to list of messages
-    private func addUserMessage(text: String) {
-        let userMessage = Message(content: text, type: .text, isUserMessage: true)
-        self.messages.append(userMessage)
-        // Separately increment message count for auto-scroll
-        self.messageCount += 1
+    // Add chat message to list of messages
+    private func addResponseMessage(content: String, type: Message.MessageType, isUserMessage: Bool) {
+        DispatchQueue.main.async {
+            let message = Message(content: content, type: type, isUserMessage: isUserMessage)
+            self.messages.append(message)
+            self.messageCount += 1
+        }
     }
     
     // MARK: - Functions to get GPT-3 completion and DALL-E image data
     
-    // Get OpenAI Chat Bot response to user message
+    // Get OpenAI GPT-3 response to user message
     private func getCompletion(prompt: String) {
         openAIService.sendCompletion(prompt: prompt) { result in
             switch result {
@@ -77,18 +80,12 @@ class ChatViewModel: ObservableObject {
                 
                 // Send error message as response if response is empty string
                 if formattedResponse.isEmpty {
-                    formattedResponse = "I'm sorry 😢, I couldn't quite understand that. Try rephrasing your request as either a statement or question."
+                    formattedResponse = Constants.emptyResponse
                 }
-                
-                let chatBotMessage = Message(content: formattedResponse, type: .text, isUserMessage: false)
-                
-                // Add response to list of messages
-                DispatchQueue.main.async {
-                    self.messages.append(chatBotMessage)
-                    self.messageCount += 1
-                }
+                self.addResponseMessage(content: formattedResponse, type: .text, isUserMessage: false)
             case .failure(let error):
                 print("ERROR: \(error.localizedDescription)")
+                self.addResponseMessage(content: Constants.errorResponse, type: .text, isUserMessage: false)
             }
         }
     }
@@ -99,15 +96,10 @@ class ChatViewModel: ObservableObject {
             switch result {
             case .success(let imageUrl):
                 print("SUCCESS: Successfully retrieved DALL-E image url!")
-                let chatBotMessage = Message(content: imageUrl, type: .image, isUserMessage: false)
-                
-                // Add image to list of messages
-                DispatchQueue.main.async {
-                    self.messages.append(chatBotMessage)
-                    self.messageCount += 1
-                }
+                self.addResponseMessage(content: imageUrl, type: .image, isUserMessage: false)
             case .failure(let error):
                 print("ERROR: \(error.localizedDescription)")
+                self.addResponseMessage(content: Constants.errorResponse, type: .text, isUserMessage: false)
             }
         }
     }
