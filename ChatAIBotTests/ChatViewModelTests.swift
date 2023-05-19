@@ -12,10 +12,6 @@ final class ChatViewModelTests: XCTestCase {
     // Use protocal-driven development and dependency injection to allow testing
     let mockChatViewModel = ChatViewModel(openAIService: MockOpenAIManager())
     
-    let sampleImageURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
-    let sampleUserPrompt = "SAMPLE USER PROMPT"
-    let sampleAIResponse = "SAMPLE AI RESPONSE"
-
     // Test initial state of ChatViewModel
     func testInitialValues() {
         // Assert no messages saved yet
@@ -25,18 +21,21 @@ final class ChatViewModelTests: XCTestCase {
     
     // Test formattedMessageText field in remove leading/trailing whitespace
     func testFormattedMessageText() {
-        mockChatViewModel.messageText = "           " + sampleUserPrompt + "      "
-        XCTAssert(mockChatViewModel.formattedMessageText == sampleUserPrompt)
+        // Simulate user inputting message with leading/trailing whitespace
+        mockChatViewModel.messageText = "           " + Constants.sampleUserPrompt + "      "
+        
+        // Assert whitespace properly removed
+        XCTAssert(mockChatViewModel.formattedMessageText == Constants.sampleUserPrompt)
     }
     
     // Test clearChat function in ChatViewModel
     func testClearChat() {
         // Sample chat message list
         let testData = [
-            Message(id: "id1", content: sampleUserPrompt, type: .text, isUserMessage: true),
-            Message(id: "id2", content: sampleAIResponse, type: .text, isUserMessage: false),
-            Message(id: "id3", content: sampleUserPrompt, type: .text, isUserMessage: true),
-            Message(id: "id4", content: sampleAIResponse, type: .image, isUserMessage: false)
+            Message(id: "id1", content: Constants.sampleUserPrompt, type: .text, isUserMessage: true),
+            Message(id: "id2", content: Constants.sampleAIResponse, type: .text, isUserMessage: false),
+            Message(id: "id3", content: Constants.sampleUserPrompt, type: .text, isUserMessage: true),
+            Message(id: "id4", content: Constants.sampleImageURL, type: .image, isUserMessage: false)
         ]
         
         // Add test data to message list
@@ -54,10 +53,10 @@ final class ChatViewModelTests: XCTestCase {
     // Test getCompletion function in ChatViewModel
     func testSendGPT3Message() {
         // Simulate user sending single message
-        mockChatViewModel.sendMessage(content: sampleUserPrompt, type: .text)
+        mockChatViewModel.sendMessage(content: Constants.sampleUserPrompt, type: .text)
         
         // Assert user message added to list of messages
-        XCTAssert(mockChatViewModel.messages[0].content == sampleUserPrompt)
+        XCTAssert(mockChatViewModel.messages[0].content == "SAMPLE USER PROMPT")
         XCTAssert(mockChatViewModel.messageCount == 1)
         
         let asyncExpectation = expectation(description: "Async send message block executed.")
@@ -74,10 +73,10 @@ final class ChatViewModelTests: XCTestCase {
     // Test getGeneratedImage function in ChatViewModel
     func testSendDALLEMessage() {
         // Simulate user sending single message
-        mockChatViewModel.sendMessage(content: sampleUserPrompt, type: .image)
+        mockChatViewModel.sendMessage(content: Constants.sampleUserPrompt, type: .image)
         
         // Assert user message added to list of messages
-        XCTAssert(mockChatViewModel.messages[0].content == sampleUserPrompt)
+        XCTAssert(mockChatViewModel.messages[0].content == "SAMPLE USER PROMPT")
         XCTAssert(mockChatViewModel.messageCount == 1)
         
         let asyncExpectation = expectation(description: "Async send message block executed.")
