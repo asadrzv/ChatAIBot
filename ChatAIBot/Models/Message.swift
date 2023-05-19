@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Message: Identifiable {
+struct Message: Equatable, Identifiable {
     enum MessageType {
         case text
         case image
     }
     
-    let id = UUID()
-    let content: String
-    let type: MessageType
-    let isUserMessage: Bool
+    let id: Identifier<Message>
+    var content: String
+    var type: MessageType
+    var isUserMessage: Bool
 }

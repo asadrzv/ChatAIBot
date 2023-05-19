@@ -48,6 +48,6 @@ struct ImageView: View {
 
 struct ImageView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageView(imageUrl: Constants.sampleImageUrl, dimensions: 200)
+        ImageView(imageUrl: Constants.sampleImageURL, dimensions: 200)
     }
 }

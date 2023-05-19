@@ -17,7 +17,7 @@ class MockOpenAIManager: OpenAIService {
     
     // Completion returns test url for testing
     func sendImages(prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
-        let testData = Constants.sampleImageUrl
+        let testData = Constants.sampleImageURL
         completion(.success(testData))
     }
 }

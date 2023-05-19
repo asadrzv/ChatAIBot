@@ -46,7 +46,7 @@ class ChatViewModel: ObservableObject {
         
     // Send message through OpenAI client and append it to the list of messages
     func sendMessage(content: String, type: Message.MessageType) {
-        let userMessage = Message(content: content, type: .text, isUserMessage: true)
+        let userMessage = Message(id: "id1", content: content, type: .text, isUserMessage: true)
         self.messages.append(userMessage)
         self.messageCount += 1
         messageText = ""
@@ -62,7 +62,7 @@ class ChatViewModel: ObservableObject {
     // Add chat message to list of messages
     private func addResponseMessage(content: String, type: Message.MessageType, isUserMessage: Bool) {
         DispatchQueue.main.async {
-            let message = Message(content: content, type: type, isUserMessage: isUserMessage)
+            let message = Message(id: "id1", content: content, type: type, isUserMessage: isUserMessage)
             self.messages.append(message)
             self.messageCount += 1
         }

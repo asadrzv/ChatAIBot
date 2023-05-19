@@ -12,7 +12,7 @@ final class ChatViewModelTests: XCTestCase {
     // Use protocal-driven development and dependency injection to allow testing
     let mockChatViewModel = ChatViewModel(openAIService: MockOpenAIManager())
     
-    let sampleImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+    let sampleImageURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
     let sampleUserPrompt = "SAMPLE USER PROMPT"
     let sampleAIResponse = "SAMPLE AI RESPONSE"
 
@@ -33,10 +33,10 @@ final class ChatViewModelTests: XCTestCase {
     func testClearChat() {
         // Sample chat message list
         let testData = [
-            Message(content: sampleUserPrompt, type: .text, isUserMessage: true),
-            Message(content: sampleAIResponse, type: .text, isUserMessage: false),
-            Message(content: sampleUserPrompt, type: .text, isUserMessage: true),
-            Message(content: sampleAIResponse, type: .image, isUserMessage: false)
+            Message(id: "id1", content: sampleUserPrompt, type: .text, isUserMessage: true),
+            Message(id: "id2", content: sampleAIResponse, type: .text, isUserMessage: false),
+            Message(id: "id3", content: sampleUserPrompt, type: .text, isUserMessage: true),
+            Message(id: "id4", content: sampleAIResponse, type: .image, isUserMessage: false)
         ]
         
         // Add test data to message list

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24091E302A180FA600F8EFA0 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24091E2F2A180FA600F8EFA0 /* Identifier.swift */; };
 		2411FDF02A12B6610043D50A /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411FDEF2A12B6610043D50A /* OpenAIService.swift */; };
 		2411FDF22A12D8240043D50A /* MockOpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411FDF12A12D8240043D50A /* MockOpenAIManager.swift */; };
 		2411FDF42A12E1BE0043D50A /* ChatViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411FDF32A12E1BE0043D50A /* ChatViewModelTests.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24091E2F2A180FA600F8EFA0 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		2411FDEF2A12B6610043D50A /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		2411FDF12A12D8240043D50A /* MockOpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOpenAIManager.swift; sourceTree = "<group>"; };
 		2411FDF32A12E1BE0043D50A /* ChatViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModelTests.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		24DDC1352A0C2D270063DC5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				24091E2F2A180FA600F8EFA0 /* Identifier.swift */,
 				24DDC1412A0C35E20063DC5C /* Message.swift */,
 			);
 			path = Models;
@@ -361,6 +364,7 @@
 				2411FDFC2A14079D0043D50A /* HomeView.swift in Sources */,
 				24DDC1092A0C25830063DC5C /* ChatAIBotApp.swift in Sources */,
 				24F9824F2A17345D00E34E8C /* View+Extensions.swift in Sources */,
+				24091E302A180FA600F8EFA0 /* Identifier.swift in Sources */,
 				24DDC1402A0C339D0063DC5C /* MessageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
