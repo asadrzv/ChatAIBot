@@ -25,7 +25,7 @@ struct Constants {
     static let emptyResponse = "I'm sorry 😅, I couldn't quite understand that. Try rephrasing your request as either a statement or question."
     
     // Sample text message
-    static let sampleTextMessage = Message(id: "id1", content: sampleImageURL, type: .image, isUserMessage: true)
+    static let sampleTextMessage = Message(id: "id1", content: sampleUserPrompt, type: .text, isUserMessage: true)
     
     // Sample image message
     static let sampleImageMessage = Message(id: "id2", content: sampleImageURL, type: .image, isUserMessage: false)
