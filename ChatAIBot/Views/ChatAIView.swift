@@ -60,8 +60,8 @@ struct ChatAIView: View {
                         chatViewModel.clearChat()
                         isFirstLaunch = false
                         //}
-                        // Haptic notification feedback for clearing chat
-                        hapticNotificationFeedback(type: .success)
+                        // Haptic feedback for clearing chat
+                        hapticImpactFeedback(style: .light)
                     }) {
                         Text("Clear")
                             .foregroundColor(.black)
