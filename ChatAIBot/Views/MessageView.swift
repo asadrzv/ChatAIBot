@@ -39,6 +39,7 @@ struct MessageView: View {
     }
 }
 
+// RoundedCorner shape allows creation of view with specified rounded corners
 struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
