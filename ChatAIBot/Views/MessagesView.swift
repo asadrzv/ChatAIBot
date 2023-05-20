@@ -22,9 +22,11 @@ struct MessagesView: View {
                     ForEach(chatViewModel.messages) { message in
                         MessageView(message: message)
                             // Double tap message to copy to clipboard
-                            .onTapGesture(count: 2) {
+                            .onTapGesture {
                                 clipboard.string = message.content
                                 isTextCopied.toggle()
+                                // Haptic impact feedback for copying message
+                                hapticImpactFeedback(style: .medium)
                             }
                             // FIX CLEAR CHAT ANIMATION TO LOOK CLEANER THEN UNCOMMENT
                             // Animation to slide up from bottom of view upon creation

@@ -51,6 +51,8 @@ struct ImageAIView: View {
                         //withAnimation {
                         chatViewModel.clearChat()
                         //}
+                        // Haptic notification feedback for clearing chat
+                        hapticNotificationFeedback(type: .success)
                     }) {
                         Text("Clear")
                             .foregroundColor(.black)
