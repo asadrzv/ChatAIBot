@@ -21,7 +21,7 @@ struct MessagesView: View {
                 VStack {
                     ForEach(chatViewModel.messages) { message in
                         MessageView(message: message)
-                            // Double tap message to copy to clipboard
+                            // Tap message to copy to clipboard
                             .onTapGesture {
                                 clipboard.string = message.content
                                 isTextCopied.toggle()

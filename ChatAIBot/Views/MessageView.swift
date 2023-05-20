@@ -34,6 +34,7 @@ struct MessageView: View {
             }
             .padding(.vertical, 5)
         }
+        .padding(message.isUserMessage ? .leading : .trailing, 5)
         // Align message to left (received) or right (sent)
         .frame(maxWidth: .infinity, alignment: message.isUserMessage ? .trailing : .leading)
     }

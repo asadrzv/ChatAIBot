@@ -75,8 +75,6 @@ struct ChatAIView: View {
             .padding(.top, 1)
             .navigationTitle("Chat AI")
             .navigationBarTitleDisplayMode(.inline)
-            //.toolbarBackground(Color.white, for: .navigationBar)
-            //.toolbarBackground(Color.white, for: .tabBar)
         }
         .toast(isPresenting: $isTextCopied) {
             // Alert indicates if message is copied to clipboard
