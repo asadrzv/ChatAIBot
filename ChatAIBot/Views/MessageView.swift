@@ -30,12 +30,26 @@ struct MessageView: View {
                             .background(.gray.opacity(0.2))
                     }
                 }
-                .cornerRadius(10)
+                .roundedCorner(10, corners: message.isUserMessage ? [.bottomLeft, .topLeft, .topRight] : [.bottomRight, .topLeft, .topRight])
             }
             .padding(.vertical, 5)
         }
         // Align message to left (received) or right (sent)
         .frame(maxWidth: .infinity, alignment: message.isUserMessage ? .trailing : .leading)
+    }
+}
+
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        return Path(path.cgPath)
     }
 }
 
