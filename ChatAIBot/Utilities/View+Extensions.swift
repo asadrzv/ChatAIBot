@@ -26,10 +26,8 @@ extension View {
     // .medium -> Medium interaction (i.e. pulling down refresh control or sliding switch)
     // .heavy -> Heavy interaction (i.e. force pressing button)
     func hapticImpactFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
-        //self.onTapGesture {
-            let feedback = UIImpactFeedbackGenerator(style: style)
-            feedback.impactOccurred()
-        //}
+        let feedback = UIImpactFeedbackGenerator(style: style)
+        feedback.impactOccurred()
     }
     
     // Returns view with haptic feedback for when user receives a notification or alert
@@ -38,9 +36,7 @@ extension View {
     // .warning -> Warning notification (i.e. unpermitted action or internet error)
     // .error -> Error notification (i.e. invalid input or app problem)
     func hapticNotificationFeedback(type: UINotificationFeedbackGenerator.FeedbackType) {
-        //self.onTapGesture {
-            let feedback = UINotificationFeedbackGenerator()
-            feedback.notificationOccurred(type)
-        //}
+        let feedback = UINotificationFeedbackGenerator()
+        feedback.notificationOccurred(type)
     }
 }
