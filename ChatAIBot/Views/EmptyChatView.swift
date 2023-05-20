@@ -20,6 +20,7 @@ struct EmptyChatView: View {
                 .padding(10)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.white)
     }
 }
 
