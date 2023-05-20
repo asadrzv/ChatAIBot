@@ -38,6 +38,8 @@ struct ChatAIView: View {
                         }
                     }
                 }
+                // When dismissed, the new view stays on top
+                .zIndex(1)
                 .onTapGesture {
                     // Dismiss keyboard when user taps outside textfield
                     dismissKeyboard()
@@ -73,6 +75,8 @@ struct ChatAIView: View {
             .padding(.top, 1)
             .navigationTitle("Chat AI")
             .navigationBarTitleDisplayMode(.inline)
+            //.toolbarBackground(Color.white, for: .navigationBar)
+            //.toolbarBackground(Color.white, for: .tabBar)
         }
         .toast(isPresenting: $isTextCopied) {
             // Alert indicates if message is copied to clipboard
@@ -124,10 +128,10 @@ struct ChatAIView: View {
                 
                 // Send messsage button
                 Button(action: {
-                    // FIX CLEAR CHAT ANIMATION TO LOOK CLEANER THEN UNCOMMENT
-                    //withAnimation {
-                    chatViewModel.sendGPT3Message()
-                    //}
+                    // Animation for message to slide up from bottom of view upon creation
+                    withAnimation {
+                        chatViewModel.sendGPT3Message()
+                    }
                     isTextFieldFocused.toggle()
                 }) {
                     Image(systemName: "paperplane.fill")

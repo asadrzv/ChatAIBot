@@ -32,6 +32,8 @@ struct ImageAIView: View {
                         )
                     }
                 }
+                // When dismissed, the new view stays on top
+                .zIndex(1)
                 .onTapGesture {
                     // Dismiss keyboard when user taps outside textfield
                     dismissKeyboard()
@@ -93,10 +95,10 @@ struct ImageAIView: View {
                 
                 // Send messsage button
                 Button(action: {
-                    // FIX CLEAR CHAT ANIMATION TO LOOK CLEANER THEN UNCOMMENT
-                    //withAnimation {
+                    // Animation for message to slide up from bottom of view upon creation
+                    withAnimation {
                         chatViewModel.sendDALLEMessage()
-                    //}
+                    }
                     isTextFieldFocused.toggle()
                 }) {
                     Image(systemName: "paperplane.fill")

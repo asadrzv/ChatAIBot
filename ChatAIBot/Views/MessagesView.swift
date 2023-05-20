@@ -28,9 +28,8 @@ struct MessagesView: View {
                                 // Haptic impact feedback for copying message
                                 hapticImpactFeedback(style: .medium)
                             }
-                            // FIX CLEAR CHAT ANIMATION TO LOOK CLEANER THEN UNCOMMENT
                             // Animation to slide up from bottom of view upon creation
-                            //.transition(.move(edge: .bottom))
+                            .transition(.move(edge: .bottom))
                     }
                     .padding(.horizontal)
                     
