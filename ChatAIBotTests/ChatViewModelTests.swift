@@ -32,10 +32,10 @@ final class ChatViewModelTests: XCTestCase {
     func testClearChat() {
         // Sample chat message list
         let testData = [
-            Message(id: "id1", content: Constants.sampleUserPrompt, type: .text, isUserMessage: true),
-            Message(id: "id2", content: Constants.sampleAIResponse, type: .text, isUserMessage: false),
-            Message(id: "id3", content: Constants.sampleUserPrompt, type: .text, isUserMessage: true),
-            Message(id: "id4", content: Constants.sampleImageURL, type: .image, isUserMessage: false)
+            Message(content: Constants.sampleUserPrompt, type: .text, isUserMessage: true),
+            Message(content: Constants.sampleAIResponse, type: .text, isUserMessage: false),
+            Message(content: Constants.sampleUserPrompt, type: .text, isUserMessage: true),
+            Message(content: Constants.sampleImageURL, type: .image, isUserMessage: false)
         ]
         
         // Add test data to message list

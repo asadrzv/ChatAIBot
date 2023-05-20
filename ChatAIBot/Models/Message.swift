@@ -13,7 +13,7 @@ struct Message: Equatable, Identifiable {
         case image
     }
     
-    let id: Identifier<Message>
+    let id: Identifier<Message> = Identifier(stringLiteral: UUID().uuidString)
     var content: String
     var type: MessageType
     var isUserMessage: Bool

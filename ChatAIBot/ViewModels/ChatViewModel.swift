@@ -46,7 +46,7 @@ class ChatViewModel: ObservableObject {
         
     // Send message through OpenAI client and append it to the list of messages
     func sendMessage(content: String, type: Message.MessageType) {
-        let userMessage = Message(id: "id1", content: content, type: .text, isUserMessage: true)
+        let userMessage = Message(content: content, type: .text, isUserMessage: true)
         self.messages.append(userMessage)
         self.messageCount += 1
         messageText = ""
@@ -62,7 +62,7 @@ class ChatViewModel: ObservableObject {
     // Add chat message to list of messages
     private func addResponseMessage(content: String, type: Message.MessageType, isUserMessage: Bool) {
         DispatchQueue.main.async {
-            let message = Message(id: "id1", content: content, type: type, isUserMessage: isUserMessage)
+            let message = Message(content: content, type: type, isUserMessage: isUserMessage)
             self.messages.append(message)
             self.messageCount += 1
         }
@@ -94,9 +94,9 @@ class ChatViewModel: ObservableObject {
     private func getGeneratedImage(prompt: String) {
         openAIService.sendImages(prompt: prompt) { result in
             switch result {
-            case .success(let imageUrl):
+            case .success(let imageURL):
                 print("SUCCESS: Successfully retrieved DALL-E image url!")
-                self.addResponseMessage(content: imageUrl, type: .image, isUserMessage: false)
+                self.addResponseMessage(content: imageURL, type: .image, isUserMessage: false)
             case .failure(let error):
                 print("ERROR: \(error.localizedDescription)")
                 self.addResponseMessage(content: Constants.errorResponse, type: .text, isUserMessage: false)

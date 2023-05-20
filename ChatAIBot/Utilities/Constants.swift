@@ -25,17 +25,17 @@ struct Constants {
     static let emptyResponse = "I'm sorry 😅, I couldn't quite understand that. Try rephrasing your request as either a statement or question."
     
     // Sample text message
-    static let sampleTextMessage = Message(id: "id1", content: sampleUserPrompt, type: .text, isUserMessage: true)
+    static let sampleTextMessage = Message(content: sampleUserPrompt, type: .text, isUserMessage: true)
     
     // Sample image message
-    static let sampleImageMessage = Message(id: "id2", content: sampleImageURL, type: .image, isUserMessage: false)
+    static let sampleImageMessage = Message(content: sampleImageURL, type: .image, isUserMessage: false)
     
     // Intro messages to be shown on app launch
     static let introMessages = [
-        Message(id: "id1", content: "What exactly is Chat AI?", type: .text, isUserMessage: true),
-        Message(id: "id2", content: "Chat AI 💬 is the next-gen tool here to skyrocket 🚀 your productivity 📈 and keep you on track for success 😃", type: .text, isUserMessage: false),
-        Message(id: "id3", content: "But what does it actually do?", type: .text, isUserMessage: true),
-        Message(id: "id4", content: "Chat AI 😎 can do almost anything, from writing those pesky work emails ✉️ to helping you out with HW 📚", type: .text, isUserMessage: false),
-        Message(id: "id5", content: "Really?! That's so cool! Let me try...", type: .text, isUserMessage: true),
+        Message(content: "What exactly is Chat AI?", type: .text, isUserMessage: true),
+        Message(content: "Chat AI 💬 is the next-gen tool here to skyrocket 🚀 your productivity 📈 and keep you on track for success 😃", type: .text, isUserMessage: false),
+        Message(content: "But what does it actually do?", type: .text, isUserMessage: true),
+        Message(content: "Chat AI 😎 can do almost anything, from writing those pesky work emails ✉️ to helping you out with HW 📚", type: .text, isUserMessage: false),
+        Message(content: "Really?! That's so cool! Let me try...", type: .text, isUserMessage: true),
     ]
 }
