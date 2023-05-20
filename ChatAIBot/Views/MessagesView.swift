@@ -26,8 +26,9 @@ struct MessagesView: View {
                                 clipboard.string = message.content
                                 isTextCopied.toggle()
                             }
+                            // FIX CLEAR CHAT ANIMATION TO LOOK CLEANER THEN UNCOMMENT
                             // Animation to slide up from bottom of view upon creation
-                            .transition(.move(edge: .bottom))
+                            //.transition(.move(edge: .bottom))
                     }
                     .padding(.horizontal)
                     
