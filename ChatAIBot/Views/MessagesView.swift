@@ -26,6 +26,8 @@ struct MessagesView: View {
                                 clipboard.string = message.content
                                 isTextCopied.toggle()
                             }
+                            // Animation to slide up from bottom of view upon creation
+                            .transition(.move(edge: .bottom))
                     }
                     .padding(.horizontal)
                     

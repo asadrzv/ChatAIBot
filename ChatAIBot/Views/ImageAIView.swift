@@ -19,7 +19,7 @@ struct ImageAIView: View {
             VStack {
                 VStack {
                     if !chatViewModel.messages.isEmpty {
-                        // Chat messsage bubbles with auto scroll to latest messge
+                        // Chat message bubbles with auto scroll to latest message
                         MessagesView(
                             chatViewModel: chatViewModel,
                             isTextCopied: $isTextCopied
@@ -36,13 +36,19 @@ struct ImageAIView: View {
                     // Dismiss keyboard when user taps outside textfield
                     dismissKeyboard()
                 }
+                // Animation to slide down from top of view upon clearing chat
+                .transition(.move(edge: .bottom))
                 // Botoom tool bar view to type/send new message
                 BottomToolBarView
             }
             .toolbar {
                 // Clear chat button
                 ToolbarItemGroup(placement: .navigationBarLeading) {
-                    Button(action: chatViewModel.clearChat) {
+                    Button(action: {
+                        withAnimation {
+                            chatViewModel.clearChat()
+                        }
+                    }) {
                         Text("Clear")
                             .foregroundColor(.black)
                             .padding(.horizontal, 15)
@@ -82,7 +88,9 @@ struct ImageAIView: View {
                 
                 // Send messsage button
                 Button(action: {
-                    chatViewModel.sendDALLEMessage()
+                    withAnimation {
+                        chatViewModel.sendDALLEMessage()
+                    }
                     isTextFieldFocused.toggle()
                 }) {
                     Image(systemName: "paperplane.fill")

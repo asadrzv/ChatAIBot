@@ -42,6 +42,8 @@ struct ChatAIView: View {
                     // Dismiss keyboard when user taps outside textfield
                     dismissKeyboard()
                 }
+                // Animation to slide down from top of view upon clearing chat
+                .transition(.move(edge: .bottom))
                 // Botoom tool bar view to type/send new message
                 BottomToolBarView
             }
@@ -49,8 +51,10 @@ struct ChatAIView: View {
                 // Clear chat button
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button(action: {
-                        chatViewModel.clearChat()
-                        isFirstLaunch = false
+                        withAnimation {
+                            chatViewModel.clearChat()
+                            isFirstLaunch = false
+                        }
                     }) {
                         Text("Clear")
                             .foregroundColor(.black)
@@ -115,7 +119,9 @@ struct ChatAIView: View {
                 
                 // Send messsage button
                 Button(action: {
-                    chatViewModel.sendGPT3Message()
+                    withAnimation {
+                        chatViewModel.sendGPT3Message()
+                    }
                     isTextFieldFocused.toggle()
                 }) {
                     Image(systemName: "paperplane.fill")
