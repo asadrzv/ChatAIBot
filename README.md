@@ -12,6 +12,7 @@ The following functionality is completed:
 - [x] User can enter a prompt and Image AI will generate an image
 - [x] User can copy messages to their clipboard
 - [x] User can clear all chat messages
+- [x] User receives haptic feedback for clearing/copying messages
 
 ## 3rd Party Libraries
 * [OpenAI HTTP API](https://platform.openai.com/docs/api-reference)
