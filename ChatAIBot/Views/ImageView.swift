@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct ImageView: View {
-    let imageUrl: String
+    let imageURL: String
     let dimensions: Double // REPLACE HARDCODED DIMENSIONS WITH DYNAMIC SIZING
     
     // Specify animation between phase changes
     private let transaction: Transaction = .init(animation: .linear)
         
-    init(imageUrl: String, dimensions: Double) {
-        self.imageUrl = imageUrl
+    init(imageURL: String, dimensions: Double) {
+        self.imageURL = imageURL
         self.dimensions = dimensions
     }
     
     var body: some View {
         // Use AsyncImage to fetch image from URL and automatically cache it
-        AsyncImage(url: URL(string: imageUrl), transaction: transaction) { phase in
+        AsyncImage(url: URL(string: imageURL), transaction: transaction) { phase in
             // Transaction phase parameter to handle errors loading image
             switch phase {
             // Placeholder loading image
@@ -50,10 +50,10 @@ struct ImageView: View {
 struct ImageView_Previews: PreviewProvider {
     static var previews: some View {
         // Empty image URL
-        ImageView(imageUrl: "", dimensions: 200)
+        ImageView(imageURL: "", dimensions: 200)
         // Successfully fetched image
-        ImageView(imageUrl: Constants.sampleImageURL, dimensions: 200)
+        ImageView(imageURL: Constants.sampleImageURL, dimensions: 200)
         // Error fetching image from URL
-        ImageView(imageUrl: "error", dimensions: 200)
+        ImageView(imageURL: "error", dimensions: 200)
     }
 }

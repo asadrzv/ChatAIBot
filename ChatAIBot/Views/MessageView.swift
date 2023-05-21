@@ -25,7 +25,7 @@ struct MessageView: View {
                             .foregroundColor(message.isUserMessage ? .white : .black)
                     // Message image content
                     case .image:
-                        ImageView(imageUrl: message.content, dimensions: 300)
+                        ImageView(imageURL: message.content, dimensions: 300)
                             .padding(15)
                             .background(.gray.opacity(0.2))
                     }
