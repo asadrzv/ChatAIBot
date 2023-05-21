@@ -156,6 +156,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		241760532A1AAC1500C0BEF1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2411FDEF2A12B6610043D50A /* OpenAIService.swift */,
+				24DDC1392A0C2D5A0063DC5C /* OpenAIManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		24DDC0FC2A0C25830063DC5C = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +195,7 @@
 				24DDC1352A0C2D270063DC5C /* Models */,
 				24DDC1362A0C2D2C0063DC5C /* Views */,
 				24DDC1372A0C2D320063DC5C /* ViewModels */,
+				241760532A1AAC1500C0BEF1 /* Network */,
 				241760502A1A9A2900C0BEF1 /* Mocks */,
 				241760522A1A9B4800C0BEF1 /* Resources */,
 				24DDC10E2A0C25880063DC5C /* Preview Content */,
@@ -252,8 +262,6 @@
 			children = (
 				24F9824E2A17345D00E34E8C /* View+Extensions.swift */,
 				24DDC1432A0C36220063DC5C /* Constants.swift */,
-				2411FDEF2A12B6610043D50A /* OpenAIService.swift */,
-				24DDC1392A0C2D5A0063DC5C /* OpenAIManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
