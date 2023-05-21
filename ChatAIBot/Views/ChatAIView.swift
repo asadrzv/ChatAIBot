@@ -27,7 +27,7 @@ struct ChatAIView: View {
                     } else {
                         if isFirstLaunch {
                             // Intro view shown on first launch
-                            IntroView
+                            ExplanatoryView()
                         } else {
                             // Empty chat view message/image
                             EmptyChatView(
@@ -82,32 +82,6 @@ struct ChatAIView: View {
                 type: .regular,
                 title: "Message Copied"
             )
-        }
-    }
-    
-    // MARK: - Custom Views
-    
-    // Introductory text explaining Chat AI to user
-    private var IntroView: some View {
-        ScrollView {
-            ForEach(Constants.introMessages[0...1]) { message in
-                MessageView(message: message)
-            }
-            .padding(.horizontal)
-            
-            VStack {
-                Image(systemName: "ellipsis.message")
-                    .font(.largeTitle)
-                    .padding(.top, 10)
-                Text("Ask me anything...")
-                    .font(.subheadline)
-                    .padding(10)
-            }
-            
-            ForEach(Constants.introMessages[2...4]) { message in
-                MessageView(message: message)
-            }
-            .padding(.horizontal)
         }
     }
 }
