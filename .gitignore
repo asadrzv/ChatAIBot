@@ -92,4 +92,4 @@ iOSInjectionProject/
 # Secrets
 #
 # Do not store OpenAI API Key to git repo.
-ChatAIBot/Secrets.xcconfig
+ChatAIBot/Resources/Secrets.xcconfig

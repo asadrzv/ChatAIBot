@@ -153,8 +153,10 @@
 		241760522A1A9B4800C0BEF1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				24DDC10E2A0C25880063DC5C /* Preview Content */,
 				24DDC10C2A0C25880063DC5C /* Assets.xcassets */,
 				24DDC1482A0C7DC30063DC5C /* OpenAIService-Info.plist */,
+				24DDC1472A0C7C400063DC5C /* Secrets.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -191,7 +193,6 @@
 		24DDC1072A0C25830063DC5C /* ChatAIBot */ = {
 			isa = PBXGroup;
 			children = (
-				24DDC1472A0C7C400063DC5C /* Secrets.xcconfig */,
 				241760512A1A9AE300C0BEF1 /* Application */,
 				24DDC1382A0C2D470063DC5C /* Utilities */,
 				24DDC1352A0C2D270063DC5C /* Models */,
@@ -200,7 +201,6 @@
 				241760532A1AAC1500C0BEF1 /* Network */,
 				241760502A1A9A2900C0BEF1 /* Mocks */,
 				241760522A1A9B4800C0BEF1 /* Resources */,
-				24DDC10E2A0C25880063DC5C /* Preview Content */,
 			);
 			path = ChatAIBot;
 			sourceTree = "<group>";
@@ -210,7 +210,8 @@
 			children = (
 				24DDC10F2A0C25880063DC5C /* Preview Assets.xcassets */,
 			);
-			path = "Preview Content";
+			name = "Preview Content";
+			path = "../Preview Content";
 			sourceTree = "<group>";
 		};
 		24DDC1182A0C25890063DC5C /* ChatAIBotTests */ = {
@@ -585,7 +586,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ChatAIBot/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ChatAIBot/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = K5CK74M6KR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -625,7 +626,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ChatAIBot/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ChatAIBot/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = K5CK74M6KR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
