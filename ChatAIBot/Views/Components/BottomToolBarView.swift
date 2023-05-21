@@ -49,7 +49,7 @@ struct BottomToolBarView: View {
 struct BottomToolBarView_Previews: PreviewProvider {
     static var previews: some View {
         BottomToolBarView(
-            chatViewModel: ChatViewModel(openAIService: MockOpenAIManager())
+            chatViewModel: ChatViewModel(openAIService: OpenAIManager())
         )
     }
 }

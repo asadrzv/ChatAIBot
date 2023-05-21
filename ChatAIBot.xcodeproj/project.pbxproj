@@ -132,6 +132,30 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
+		241760502A1A9A2900C0BEF1 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2411FDF12A12D8240043D50A /* MockOpenAIManager.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		241760512A1A9AE300C0BEF1 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				24DDC1082A0C25830063DC5C /* ChatAIBotApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		241760522A1A9B4800C0BEF1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				24DDC10C2A0C25880063DC5C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		24DDC0FC2A0C25830063DC5C = {
 			isa = PBXGroup;
 			children = (
@@ -155,14 +179,15 @@
 		24DDC1072A0C25830063DC5C /* ChatAIBot */ = {
 			isa = PBXGroup;
 			children = (
-				24DDC1482A0C7DC30063DC5C /* Info.plist */,
 				24DDC1472A0C7C400063DC5C /* Secrets.xcconfig */,
-				24DDC10C2A0C25880063DC5C /* Assets.xcassets */,
-				24DDC1082A0C25830063DC5C /* ChatAIBotApp.swift */,
+				24DDC1482A0C7DC30063DC5C /* Info.plist */,
+				241760512A1A9AE300C0BEF1 /* Application */,
 				24DDC1382A0C2D470063DC5C /* Utilities */,
 				24DDC1352A0C2D270063DC5C /* Models */,
 				24DDC1362A0C2D2C0063DC5C /* Views */,
 				24DDC1372A0C2D320063DC5C /* ViewModels */,
+				241760502A1A9A2900C0BEF1 /* Mocks */,
+				241760522A1A9B4800C0BEF1 /* Resources */,
 				24DDC10E2A0C25880063DC5C /* Preview Content */,
 			);
 			path = ChatAIBot;
@@ -229,7 +254,6 @@
 				24DDC1432A0C36220063DC5C /* Constants.swift */,
 				2411FDEF2A12B6610043D50A /* OpenAIService.swift */,
 				24DDC1392A0C2D5A0063DC5C /* OpenAIManager.swift */,
-				2411FDF12A12D8240043D50A /* MockOpenAIManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
