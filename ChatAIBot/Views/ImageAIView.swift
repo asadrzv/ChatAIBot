@@ -11,7 +11,6 @@ import AlertToast
 struct ImageAIView: View {
     @StateObject private var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
     
-    @FocusState private var isTextFieldFocused
     @State private var isTextCopied = false
         
     var body: some View {
@@ -43,7 +42,7 @@ struct ImageAIView: View {
                 //.transition(.move(edge: .bottom))
                 
                 // Botoom tool bar view to type/send new message
-                BottomToolBarView
+                BottomToolBarView(chatViewModel: chatViewModel)
             }
             .toolbar {
                 // Clear chat button
@@ -77,42 +76,6 @@ struct ImageAIView: View {
                 title: "Message Copied"
             )
         }
-    }
-    
-    // MARK: - Custom Views
-    
-    // Botoom tool bar view to type/send new message
-    private var BottomToolBarView: some View {
-        VStack {
-            HStack {
-                // Text field to get user message to send
-                TextField("Message", text: $chatViewModel.messageText, axis: .vertical)
-                    .focused($isTextFieldFocused)
-                    .lineLimit(3)
-                    .padding(15)
-                    .background(.thickMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                
-                // Send messsage button
-                Button(action: {
-                    // Animation for message to slide up from bottom of view upon creation
-                    withAnimation {
-                        chatViewModel.sendDALLEMessage()
-                    }
-                    isTextFieldFocused.toggle()
-                }) {
-                    Image(systemName: "paperplane.fill")
-                        .foregroundColor(.white)
-                        .padding(15)
-                        .background(Circle()
-                            // Set send message button to gray (nothing to send) or red (text to send)
-                            .foregroundColor(chatViewModel.formattedMessageText.isEmpty ? .gray : .red.opacity(0.9))
-                        )
-                }
-                .disabled(chatViewModel.formattedMessageText.isEmpty)
-            }
-        }
-        .padding()
     }
 }
 

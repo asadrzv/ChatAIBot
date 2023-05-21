@@ -16,6 +16,7 @@
 		2411FDFA2A1402A30043D50A /* ImageAIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411FDF92A1402A30043D50A /* ImageAIView.swift */; };
 		2411FDFC2A14079D0043D50A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2411FDFB2A14079D0043D50A /* HomeView.swift */; };
 		2411FDFF2A1411180043D50A /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 2411FDFE2A1411180043D50A /* AlertToast */; };
+		2417604A2A1A7F8400C0BEF1 /* BottomToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241760492A1A7F8400C0BEF1 /* BottomToolBarView.swift */; };
 		2492BEBA2A169E5A00B78DE5 /* EmptyChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2492BEB92A169E5A00B78DE5 /* EmptyChatView.swift */; };
 		2492BEBC2A16A0E200B78DE5 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2492BEBB2A16A0E200B78DE5 /* MessagesView.swift */; };
 		24DDC1092A0C25830063DC5C /* ChatAIBotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DDC1082A0C25830063DC5C /* ChatAIBotApp.swift */; };
@@ -59,6 +60,7 @@
 		2411FDF72A13E7BF0043D50A /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		2411FDF92A1402A30043D50A /* ImageAIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAIView.swift; sourceTree = "<group>"; };
 		2411FDFB2A14079D0043D50A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		241760492A1A7F8400C0BEF1 /* BottomToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomToolBarView.swift; sourceTree = "<group>"; };
 		2492BEB92A169E5A00B78DE5 /* EmptyChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyChatView.swift; sourceTree = "<group>"; };
 		2492BEBB2A16A0E200B78DE5 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		24DDC1052A0C25830063DC5C /* ChatAIBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatAIBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +187,7 @@
 				24DDC13B2A0C2E620063DC5C /* ChatAIView.swift */,
 				2411FDF92A1402A30043D50A /* ImageAIView.swift */,
 				2492BEB92A169E5A00B78DE5 /* EmptyChatView.swift */,
+				241760492A1A7F8400C0BEF1 /* BottomToolBarView.swift */,
 				2492BEBB2A16A0E200B78DE5 /* MessagesView.swift */,
 				24DDC13F2A0C339D0063DC5C /* MessageView.swift */,
 				2411FDF72A13E7BF0043D50A /* ImageView.swift */,
@@ -357,6 +360,7 @@
 				2492BEBC2A16A0E200B78DE5 /* MessagesView.swift in Sources */,
 				2411FDF22A12D8240043D50A /* MockOpenAIManager.swift in Sources */,
 				24DDC13E2A0C30800063DC5C /* ChatViewModel.swift in Sources */,
+				2417604A2A1A7F8400C0BEF1 /* BottomToolBarView.swift in Sources */,
 				2492BEBA2A169E5A00B78DE5 /* EmptyChatView.swift in Sources */,
 				2411FDF02A12B6610043D50A /* OpenAIService.swift in Sources */,
 				24DDC1422A0C35E20063DC5C /* Message.swift in Sources */,
