@@ -111,6 +111,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2417604D2A1A987B00C0BEF1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2417604B2A1A8E3500C0BEF1 /* ExplanatoryView.swift */,
+				2492BEB92A169E5A00B78DE5 /* EmptyChatView.swift */,
+				241760492A1A7F8400C0BEF1 /* BottomToolBarView.swift */,
+				2417604E2A1A989900C0BEF1 /* Messages */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2417604E2A1A989900C0BEF1 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				2492BEBB2A16A0E200B78DE5 /* MessagesView.swift */,
+				24DDC13F2A0C339D0063DC5C /* MessageView.swift */,
+				2411FDF72A13E7BF0043D50A /* ImageView.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
 		24DDC0FC2A0C25830063DC5C = {
 			isa = PBXGroup;
 			children = (
@@ -188,12 +209,7 @@
 				2411FDFB2A14079D0043D50A /* HomeView.swift */,
 				24DDC13B2A0C2E620063DC5C /* ChatAIView.swift */,
 				2411FDF92A1402A30043D50A /* ImageAIView.swift */,
-				2417604B2A1A8E3500C0BEF1 /* ExplanatoryView.swift */,
-				2492BEB92A169E5A00B78DE5 /* EmptyChatView.swift */,
-				241760492A1A7F8400C0BEF1 /* BottomToolBarView.swift */,
-				2492BEBB2A16A0E200B78DE5 /* MessagesView.swift */,
-				24DDC13F2A0C339D0063DC5C /* MessageView.swift */,
-				2411FDF72A13E7BF0043D50A /* ImageView.swift */,
+				2417604D2A1A987B00C0BEF1 /* Components */,
 			);
 			path = Views;
 			sourceTree = "<group>";
