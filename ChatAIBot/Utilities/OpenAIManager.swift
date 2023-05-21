@@ -8,7 +8,7 @@
 import Foundation
 import OpenAISwift
 
-class OpenAIManager: OpenAIService {
+final class OpenAIManager: OpenAIService {
     private var openAI: OpenAISwift
 
     init() {
