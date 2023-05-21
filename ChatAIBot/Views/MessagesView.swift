@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MessagesView: View {
-    @ObservedObject var chatViewModel: ChatViewModel
+    let messages: [Message]
     
     @State var clipboard = UIPasteboard.general
     @Binding var isTextCopied: Bool // Toggle to show Toast alert on ChatAI/ImageAI views
@@ -19,7 +19,7 @@ struct MessagesView: View {
         ScrollView {
             ScrollViewReader { scrollViewProxy in
                 VStack {
-                    ForEach(chatViewModel.messages) { message in
+                    ForEach(messages) { message in
                         MessageView(message: message)
                             // Tap message to copy to clipboard
                             .onTapGesture {
@@ -38,7 +38,7 @@ struct MessagesView: View {
                         .id(bottomID)
                 }
                 // Auto scroll to latest chat message when message count increases
-                .onReceive(chatViewModel.$messageCount) { _ in
+                .onChange(of: messages.count) { _ in
                     withAnimation(.easeOut(duration: 0.5)) {
                         scrollViewProxy.scrollTo(bottomID, anchor: .bottom)
                     }
@@ -51,7 +51,7 @@ struct MessagesView: View {
 struct MessagesView_Previews: PreviewProvider {
     static var previews: some View {
         MessagesView(
-            chatViewModel: ChatViewModel(openAIService: MockOpenAIManager()),
+            messages: Constants.introMessages,
             isTextCopied: .constant(false)
         )
     }

@@ -20,7 +20,7 @@ struct ImageAIView: View {
                     if !chatViewModel.messages.isEmpty {
                         // Chat message bubbles with auto scroll to latest message
                         MessagesView(
-                            chatViewModel: chatViewModel,
+                            messages: chatViewModel.messages,
                             isTextCopied: $isTextCopied
                         )
                     } else {
