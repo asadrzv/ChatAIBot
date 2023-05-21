@@ -19,7 +19,7 @@ final class OpenAIManager: OpenAIService {
 
     // Predict completion text for user message using OpenAI's GPT-3
     // Return resulting generated response or an error
-    func sendCompletion(prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func sendCompletion(with prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
         openAI.sendCompletion(
             with: prompt,
             model: .gpt3(.curie),
@@ -39,7 +39,7 @@ final class OpenAIManager: OpenAIService {
     
     // Generate image url based on input prompt using OpenAI's DALL-E
     // Return resulting generated image URL or an error
-    func sendImages(prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func sendImages(with prompt: String, completion: @escaping (Result<String, Error>) -> Void) {
         openAI.sendImages(
             with: prompt,
             numImages: 1,

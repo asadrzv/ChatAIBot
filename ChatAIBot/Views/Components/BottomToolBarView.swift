@@ -10,6 +10,8 @@ import SwiftUI
 struct BottomToolBarView: View {
     @ObservedObject var chatViewModel: ChatViewModel
     
+    let messageType: Message.MessageType
+    
     @FocusState private var isTextFieldFocused
 
     var body: some View {
@@ -27,7 +29,7 @@ struct BottomToolBarView: View {
                 Button(action: {
                     // Animation for message to slide up from bottom of view upon creation
                     withAnimation {
-                        chatViewModel.sendGPT3Message()
+                        chatViewModel.sendMessage(forType: messageType)
                     }
                     isTextFieldFocused.toggle()
                 }) {
@@ -36,10 +38,10 @@ struct BottomToolBarView: View {
                         .padding(15)
                         .background(Circle()
                             // Set send message button to gray (nothing to send) or red (text to send)
-                            .foregroundColor(chatViewModel.formattedMessageText.isEmpty ? .gray : .red.opacity(0.9))
+                            .foregroundColor(chatViewModel.trimmedMessageText.isEmpty ? .gray : .red.opacity(0.9))
                         )
                 }
-                .disabled(chatViewModel.formattedMessageText.isEmpty)
+                .disabled(chatViewModel.trimmedMessageText.isEmpty)
             }
         }
         .padding()
@@ -49,7 +51,8 @@ struct BottomToolBarView: View {
 struct BottomToolBarView_Previews: PreviewProvider {
     static var previews: some View {
         BottomToolBarView(
-            chatViewModel: ChatViewModel(openAIService: OpenAIManager())
+            chatViewModel: ChatViewModel(openAIService: OpenAIManager()),
+            messageType: .text
         )
     }
 }

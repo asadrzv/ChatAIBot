@@ -12,46 +12,38 @@ class ChatViewModel: ObservableObject {
     
     @Published var messages = [Message]()
     @Published var messageText = ""
-    @Published var messageCount = 0
     
-    // Remove leading whitespace/newlines from messageText
-    var formattedMessageText: String {
+    // Trim leading whitespace/newlines from messageText
+    var trimmedMessageText: String {
         return messageText.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     init(openAIService: OpenAIService) {
         self.openAIService = openAIService
     }
-    
-    // MARK: - Action Handlers
-    
+        
     // Clear all chat messages
     func clearChat() {
         messages = [Message]()
-        messageCount = 0
         messageText = ""
     }
-    
-    // Send message to get GPT-3 completion
-    func sendGPT3Message() {
-        sendMessage(content: formattedMessageText, type: .text)
-    }
-    
-    // Send message to get DALL-E image data
-    func sendDALLEMessage() {
-        sendMessage(content: formattedMessageText, type: .image)
-    }
-    
+
     // MARK: - Functions to get OpenAI response and store in message list
+    
+    // Send message through OpenAI client and append it to the list of messages
+    // type: .text -> Send message to get GPT-3 completion
+    // type: .image -> Send message to get DALL-E image data
+    func sendMessage(forType type: Message.MessageType) {
+        sendMessage(withContent: trimmedMessageText, forType: type)
+    }
         
     // Send message through OpenAI client and append it to the list of messages
-    func sendMessage(content: String, type: Message.MessageType) {
+    func sendMessage(withContent content: String, forType messageType: Message.MessageType) {
         let userMessage = Message(content: content, type: .text, isUserMessage: true)
         self.messages.append(userMessage)
-        self.messageCount += 1
         messageText = ""
         
-        switch type {
+        switch messageType {
         case .text:
             getCompletion(prompt: content)
         case .image:
@@ -60,11 +52,10 @@ class ChatViewModel: ObservableObject {
     }
     
     // Add chat message to list of messages
-    private func addResponseMessage(content: String, type: Message.MessageType, isUserMessage: Bool) {
+    private func addResponseMessage(withContent content: String, ofType type: Message.MessageType, isUserMessage: Bool) {
         DispatchQueue.main.async {
             let message = Message(content: content, type: type, isUserMessage: isUserMessage)
             self.messages.append(message)
-            self.messageCount += 1
         }
     }
     
@@ -72,7 +63,7 @@ class ChatViewModel: ObservableObject {
     
     // Get OpenAI GPT-3 response to user message
     private func getCompletion(prompt: String) {
-        openAIService.sendCompletion(prompt: prompt) { result in
+        openAIService.sendCompletion(with: prompt) { result in
             switch result {
             case .success(let response):
                 print("SUCCESS: Successfully retrieved ChatBot response!")
@@ -82,24 +73,24 @@ class ChatViewModel: ObservableObject {
                 if formattedResponse.isEmpty {
                     formattedResponse = Constants.emptyResponse
                 }
-                self.addResponseMessage(content: formattedResponse, type: .text, isUserMessage: false)
+                self.addResponseMessage(withContent: formattedResponse, ofType: .text, isUserMessage: false)
             case .failure(let error):
                 print("ERROR: \(error.localizedDescription)")
-                self.addResponseMessage(content: Constants.errorResponse, type: .text, isUserMessage: false)
+                self.addResponseMessage(withContent: Constants.errorResponse, ofType: .text, isUserMessage: false)
             }
         }
     }
     
     // Get OpenAI DALL-E image generated from user prompt
     private func getGeneratedImage(prompt: String) {
-        openAIService.sendImages(prompt: prompt) { result in
+        openAIService.sendImages(with: prompt) { result in
             switch result {
             case .success(let imageURL):
                 print("SUCCESS: Successfully retrieved DALL-E image url!")
-                self.addResponseMessage(content: imageURL, type: .image, isUserMessage: false)
+                self.addResponseMessage(withContent: imageURL, ofType: .image, isUserMessage: false)
             case .failure(let error):
                 print("ERROR: \(error.localizedDescription)")
-                self.addResponseMessage(content: Constants.errorResponse, type: .text, isUserMessage: false)
+                self.addResponseMessage(withContent: Constants.errorResponse, ofType: .text, isUserMessage: false)
             }
         }
     }

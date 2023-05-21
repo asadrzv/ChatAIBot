@@ -42,7 +42,10 @@ struct ImageAIView: View {
                 //.transition(.move(edge: .bottom))
                 
                 // Botoom tool bar view to type/send new message
-                BottomToolBarView(chatViewModel: chatViewModel)
+                BottomToolBarView(
+                    chatViewModel: chatViewModel,
+                    messageType: .image
+                )
             }
             .toolbar {
                 // Clear chat button

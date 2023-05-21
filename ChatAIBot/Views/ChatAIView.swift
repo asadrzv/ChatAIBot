@@ -48,7 +48,10 @@ struct ChatAIView: View {
                 //.transition(.move(edge: .bottom))
                 
                 // Botoom tool bar view to type/send new message
-                BottomToolBarView(chatViewModel: chatViewModel)
+                BottomToolBarView(
+                    chatViewModel: chatViewModel,
+                    messageType: .text
+                )
             }
             .toolbar {
                 // Clear chat button

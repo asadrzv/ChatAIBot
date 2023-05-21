@@ -18,6 +18,7 @@
 		2411FDFF2A1411180043D50A /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 2411FDFE2A1411180043D50A /* AlertToast */; };
 		2417604A2A1A7F8400C0BEF1 /* BottomToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241760492A1A7F8400C0BEF1 /* BottomToolBarView.swift */; };
 		2417604C2A1A8E3500C0BEF1 /* ExplanatoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2417604B2A1A8E3500C0BEF1 /* ExplanatoryView.swift */; };
+		241760552A1AC19300C0BEF1 /* OpenAIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241760542A1AC19300C0BEF1 /* OpenAIServiceTests.swift */; };
 		2492BEBA2A169E5A00B78DE5 /* EmptyChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2492BEB92A169E5A00B78DE5 /* EmptyChatView.swift */; };
 		2492BEBC2A16A0E200B78DE5 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2492BEBB2A16A0E200B78DE5 /* MessagesView.swift */; };
 		24DDC1092A0C25830063DC5C /* ChatAIBotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DDC1082A0C25830063DC5C /* ChatAIBotApp.swift */; };
@@ -63,6 +64,7 @@
 		2411FDFB2A14079D0043D50A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		241760492A1A7F8400C0BEF1 /* BottomToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomToolBarView.swift; sourceTree = "<group>"; };
 		2417604B2A1A8E3500C0BEF1 /* ExplanatoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplanatoryView.swift; sourceTree = "<group>"; };
+		241760542A1AC19300C0BEF1 /* OpenAIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIServiceTests.swift; sourceTree = "<group>"; };
 		2492BEB92A169E5A00B78DE5 /* EmptyChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyChatView.swift; sourceTree = "<group>"; };
 		2492BEBB2A16A0E200B78DE5 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		24DDC1052A0C25830063DC5C /* ChatAIBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatAIBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +218,7 @@
 			children = (
 				2411FDF52A1300890043D50A /* MessageModelTests.swift */,
 				2411FDF32A12E1BE0043D50A /* ChatViewModelTests.swift */,
+				241760542A1AC19300C0BEF1 /* OpenAIServiceTests.swift */,
 			);
 			path = ChatAIBotTests;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2411FDF42A12E1BE0043D50A /* ChatViewModelTests.swift in Sources */,
+				241760552A1AC19300C0BEF1 /* OpenAIServiceTests.swift in Sources */,
 				2411FDF62A1300890043D50A /* MessageModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
