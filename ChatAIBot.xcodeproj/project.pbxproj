@@ -82,7 +82,7 @@
 		24DDC1412A0C35E20063DC5C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		24DDC1432A0C36220063DC5C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		24DDC1472A0C7C400063DC5C /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
-		24DDC1482A0C7DC30063DC5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24DDC1482A0C7DC30063DC5C /* OpenAIService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenAIService-Info.plist"; sourceTree = "<group>"; };
 		24F9824E2A17345D00E34E8C /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				24DDC10C2A0C25880063DC5C /* Assets.xcassets */,
+				24DDC1482A0C7DC30063DC5C /* OpenAIService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -191,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				24DDC1472A0C7C400063DC5C /* Secrets.xcconfig */,
-				24DDC1482A0C7DC30063DC5C /* Info.plist */,
 				241760512A1A9AE300C0BEF1 /* Application */,
 				24DDC1382A0C2D470063DC5C /* Utilities */,
 				24DDC1352A0C2D270063DC5C /* Models */,
@@ -589,7 +589,7 @@
 				DEVELOPMENT_TEAM = K5CK74M6KR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ChatAIBot/Info.plist;
+				INFOPLIST_FILE = "ChatAIBot/Resources/OpenAIService-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Chat AI";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -629,7 +629,7 @@
 				DEVELOPMENT_TEAM = K5CK74M6KR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ChatAIBot/Info.plist;
+				INFOPLIST_FILE = "ChatAIBot/Resources/OpenAIService-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Chat AI";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
