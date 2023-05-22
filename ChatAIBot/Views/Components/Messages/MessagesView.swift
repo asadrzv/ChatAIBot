@@ -21,8 +21,8 @@ struct MessagesView: View {
                 VStack {
                     ForEach(messages) { message in
                         MessageView(message: message)
-                            // Tap message to copy to clipboard
-                            .onTapGesture {
+                            // Double tap message to copy to clipboard
+                            .onTapGesture(count: 2) {
                                 clipboard.string = message.content
                                 isTextCopied.toggle()
                                 // Haptic impact feedback for copying message
