@@ -46,12 +46,23 @@ struct SettingsView: View {
     }
     
     private var OpenSourcePackagesView: some View {
-        Form {
-            Section {
-                Text("https://github.com/adamrushy/OpenAISwift")
-                
-                Text("https://github.com/elai950/AlertToast")
+        NavigationStack {
+            let openAISwiftURL = "https://github.com/adamrushy/OpenAISwift"
+            let alertToastURL = "https://github.com/elai950/AlertToast"
+            
+            Form {
+                Section {
+                    Link("OpenAISwift",
+                         destination: URL(string: openAISwiftURL)!
+                    )
+                    
+                    Link("AlertToast",
+                         destination: URL(string: alertToastURL)!
+                    )
+                }
             }
+            .navigationTitle("Open Source Packages")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
