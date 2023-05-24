@@ -20,48 +20,43 @@ struct SettingsView: View {
                             Text("Share")
                         }
                         Button("Rate Us") {
-                            
+                            // OPEN LINK TO RATE APP ON APPSTORE
                         }
                     }
                     // Legal form links
                     Section("Legal") {
                         Button("Terms of Service") {
-                            
+                            // DISPLAY TOS VIEW
                         }
                         Button("Privacy Policy") {
-                            
+                            // DISPLAY PP VIEW
                         }
                     }
-                    // Open Source Packages links
+                    // License form links
                     Section {
-                        NavigationLink(destination: OpenSourcePackagesView) {
-                            Text("Open Source Packages")
+                        NavigationLink(destination: LicensesView) {
+                            Text("Licenses")
                         }
                     }
                 }
+                // App version
+                Text("Chat AI v" + Bundle.main.getAppVersion())
+                    .font(.footnote)
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
     
-    private var OpenSourcePackagesView: some View {
+    // Licenses used in creation of app
+    private var LicensesView: some View {
         NavigationStack {
-            let openAISwiftURL = "https://github.com/adamrushy/OpenAISwift"
-            let alertToastURL = "https://github.com/elai950/AlertToast"
-            
             Form {
                 Section {
-                    Link("OpenAISwift",
-                         destination: URL(string: openAISwiftURL)!
-                    )
-                    
-                    Link("AlertToast",
-                         destination: URL(string: alertToastURL)!
-                    )
+                    Text(Bundle.main.load(file: "Licenses"))
                 }
             }
-            .navigationTitle("Open Source Packages")
+            .navigationTitle("Licenses")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
