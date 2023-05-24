@@ -34,14 +34,14 @@ struct SettingsView: View {
                     }
                     // License form links
                     Section {
+                        // App version
+                        Text("Chat AI v" + settingsViewModel.appVersion)
+                            //.font(.footnote)
                         NavigationLink(destination: LicensesView) {
                             Text("Licenses")
                         }
                     }
                 }
-                // App version
-                Text("Chat AI v" + settingsViewModel.appVersion)
-                    .font(.footnote)
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
