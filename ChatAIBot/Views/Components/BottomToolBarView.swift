@@ -10,7 +10,7 @@ import SwiftUI
 struct BottomToolBarView: View {
     @ObservedObject var chatViewModel: ChatViewModel
     
-    let messageType: Message.MessageType
+    let messageType: MessageType
     
     @FocusState private var isTextFieldFocused
 

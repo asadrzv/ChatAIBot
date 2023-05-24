@@ -20,11 +20,15 @@ final class OpenAIServiceTests: XCTestCase {
         // Assert user message added to list of messages
         XCTAssert(mockChatViewModel.messages[0].content == "SAMPLE USER PROMPT")
         
+        // Assert activity indicator message added to list of messages
+        XCTAssert(mockChatViewModel.messages[1].type == .indicator)
+        
         let asyncExpectation = expectation(description: "Async send message block executed.")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             asyncExpectation.fulfill()
             
-            // Assert ChatBot response (async) is added to life of messages
+            // Assert ChatBot response (async) is added to life of messages and
+            // Assert activity indicator message removed from list of messages
             XCTAssert(self.mockChatViewModel.messages[1].content == "SAMPLE AI RESPONSE")
         }
         waitForExpectations(timeout: 1)
@@ -38,11 +42,15 @@ final class OpenAIServiceTests: XCTestCase {
         // Assert user message added to list of messages
         XCTAssert(mockChatViewModel.messages[0].content == "SAMPLE USER PROMPT")
         
+        // Assert activity indicator message added to list of messages
+        XCTAssert(mockChatViewModel.messages[1].type == .indicator)
+        
         let asyncExpectation = expectation(description: "Async send message block executed.")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             asyncExpectation.fulfill()
             
-            // Assert ChatBot response (async) is added to life of messages
+            // Assert ChatBot response (async) is added to life of messages and
+            // Assert activity indicator message removed from list of messages
             XCTAssert(self.mockChatViewModel.messages[1].content == "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png")
         }
         waitForExpectations(timeout: 1)

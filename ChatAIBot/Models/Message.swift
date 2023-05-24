@@ -7,12 +7,13 @@
 
 import Foundation
 
+enum MessageType {
+    case text
+    case image
+    case indicator
+}
+
 struct Message: Equatable, Identifiable {
-    enum MessageType {
-        case text
-        case image
-    }
-    
     let id: Identifier<Message> = Identifier(stringLiteral: UUID().uuidString)
     var content: String
     var type: MessageType

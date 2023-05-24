@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ActivityIndicatorView
 
 struct MessageView: View {
     let message: Message
@@ -26,6 +27,12 @@ struct MessageView: View {
                     // Message image content
                     case .image:
                         ImageView(imageURL: message.content, dimensions: 300)
+                            .padding(15)
+                            .background(.gray.opacity(0.2))
+                    // Message activity indicator
+                    case .indicator:
+                        ActivityIndicatorView(isVisible: .constant(true), type: .opacityDots(count: 3, inset: 4))
+                            .frame(width: 45, height: 45)
                             .padding(15)
                             .background(.gray.opacity(0.2))
                     }

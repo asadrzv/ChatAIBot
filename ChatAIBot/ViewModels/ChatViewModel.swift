@@ -33,29 +33,46 @@ class ChatViewModel: ObservableObject {
     // Send message through OpenAI client and append it to the list of messages
     // type: .text -> Send message to get GPT-3 completion
     // type: .image -> Send message to get DALL-E image data
-    func sendMessage(forType type: Message.MessageType) {
+    func sendMessage(forType type: MessageType) {
         sendMessage(withContent: trimmedMessageText, forType: type)
     }
         
     // Send message through OpenAI client and append it to the list of messages
-    func sendMessage(withContent content: String, forType messageType: Message.MessageType) {
+    func sendMessage(withContent content: String, forType messageType: MessageType) {
+        // Add user input message
         let userMessage = Message(content: content, type: .text, isUserMessage: true)
         self.messages.append(userMessage)
         messageText = ""
         
+        // Add temporary activity indicator
+        let indicatorMessage = Message(content: content, type: .indicator, isUserMessage: false)
+        self.messages.append(indicatorMessage)
+        
         switch messageType {
+        // Add AI completion response
         case .text:
             getCompletion(prompt: content)
+        // Add AI generated image response
         case .image:
             getGeneratedImage(prompt: content)
+        // MAYBE REFACTOR B/C THIS CASE WILL NEVER OCCUR
+        case .indicator:
+            break
         }
     }
     
     // Add chat message to list of messages
-    private func addResponseMessage(withContent content: String, ofType type: Message.MessageType, isUserMessage: Bool) {
+    private func addResponseMessage(withContent content: String, ofType type: MessageType, isUserMessage: Bool) {
         DispatchQueue.main.async {
-            let message = Message(content: content, type: type, isUserMessage: isUserMessage)
-            self.messages.append(message)
+            let responseMessage = Message(content: content, type: type, isUserMessage: isUserMessage)
+            
+            if self.messages.isEmpty {
+                // Add response message if list is empty
+                self.messages.append(responseMessage)
+            } else {
+                // Replace activity indicator message with AI response message
+                self.messages[self.messages.count - 1] = responseMessage
+            }
         }
     }
     
