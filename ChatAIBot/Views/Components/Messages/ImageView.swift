@@ -26,7 +26,7 @@ struct ImageView: View {
             switch phase {
             // Placeholder loading image
             case .empty:
-                ProgressView()
+                ProgressView("Loading")
             // Valid image
             case .success(let image):
                 image

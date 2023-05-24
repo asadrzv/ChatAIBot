@@ -32,7 +32,7 @@ struct MessageView: View {
                     // Message activity indicator
                     case .indicator:
                         ActivityIndicatorView(isVisible: .constant(true), type: .opacityDots(count: 3, inset: 4))
-                            .frame(width: 45, height: 45)
+                            .frame(width: 35, height: 35)
                             .padding(15)
                             .background(.gray.opacity(0.2))
                     }
