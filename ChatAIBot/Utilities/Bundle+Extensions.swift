@@ -18,6 +18,15 @@ extension Bundle {
         return "\(version)"
     }
     
+    // Get OpenAI API Key from Info.plist (Secrets.xcconfig)
+    func getOpenAIAPIKey() -> String {
+        guard let apiKey = Bundle.main.infoDictionary?["OpenAI API Key"] else {
+            fatalError("ERROR: Could not get OpenAI API key from Bundle!")
+        }
+        
+        return "\(apiKey)"
+    }
+    
     // Load String from static text file
     func load(file: String) -> String {
         // Find file, otherwise throw an error

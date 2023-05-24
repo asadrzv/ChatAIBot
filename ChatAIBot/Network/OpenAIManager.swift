@@ -13,7 +13,7 @@ final class OpenAIManager: OpenAIService {
 
     init() {
         // Retreive OpenAI API Key from Info.plist (Secrets.xcconfig) and setup OpenAI client
-        let apiKey = Bundle.main.infoDictionary?["OpenAI API Key"] as? String ?? ""
+        let apiKey = Bundle.main.getOpenAIAPIKey()
         openAI = OpenAISwift(authToken: apiKey)
     }
 
