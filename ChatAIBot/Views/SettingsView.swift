@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    let shareURL: String
+    @StateObject private var settingsViewModel = SettingsViewModel()
     
     var body: some View {
         NavigationStack {
@@ -16,7 +16,7 @@ struct SettingsView: View {
                 Form {
                     // General form links
                     Section("General") {
-                        ShareLink(item: shareURL) {
+                        ShareLink(item: Constants.sampleImageURL) { //REPLACE LINK WITH APP STORE LINK
                             Text("Share")
                         }
                         Button("Rate Us") {
@@ -40,7 +40,7 @@ struct SettingsView: View {
                     }
                 }
                 // App version
-                Text("Chat AI v" + Bundle.main.getAppVersion())
+                Text("Chat AI v" + settingsViewModel.appVersion)
                     .font(.footnote)
             }
             .navigationTitle("Settings")
@@ -53,7 +53,7 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section {
-                    Text(Bundle.main.load(file: "Licenses"))
+                    Text(settingsViewModel.licensesText)
                 }
             }
             .navigationTitle("Licenses")
@@ -64,6 +64,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(shareURL: Constants.sampleImageURL)
+        SettingsView()
     }
 }
