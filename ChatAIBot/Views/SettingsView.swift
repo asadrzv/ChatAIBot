@@ -27,8 +27,8 @@ struct SettingsView: View {
                             // OPEN LINK TO RATE APP ON APPSTORE
                         }
                     }
-                    
                     .listRowBackground(Color.gray.opacity(0.1))
+                    
                     // Legal form links
                     Section("Legal") {
                         Button("Terms of Service") {
@@ -43,14 +43,9 @@ struct SettingsView: View {
                     }
                     .listRowBackground(Color.gray.opacity(0.1))
 
-                    // License form links
+                    // App version
                     Section {
-                        // App version
                         Text("Chat AI v" + settingsViewModel.appVersion)
-                            //.font(.footnote)
-                        /*NavigationLink(destination: LicensesView) {
-                            Text("Licenses")
-                        }*/
                     }
                     .listRowBackground(Color.gray.opacity(0.1))
                 }

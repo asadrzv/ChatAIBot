@@ -73,19 +73,6 @@ struct ChatAIView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                     }
                 }
-                // Settings button
-                /*ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    HStack {
-                        NavigationLink(destination: SettingsView()) {
-                            Image(systemName: "gearshape")
-                                .foregroundColor(.black)
-                                .padding(.horizontal, 15)
-                                .padding(.vertical, 5)
-                            //.background(.thickMaterial)
-                            //.clipShape(RoundedRectangle(cornerRadius: 20))
-                        }
-                    }
-                }*/
             }
             .padding(.top, 1)
             .navigationTitle("Chat AI")
