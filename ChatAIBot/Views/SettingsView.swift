@@ -23,6 +23,8 @@ struct SettingsView: View {
                             // OPEN LINK TO RATE APP ON APPSTORE
                         }
                     }
+                    
+                    .listRowBackground(Color.gray.opacity(0.1))
                     // Legal form links
                     Section("Legal") {
                         Button("Terms of Service") {
@@ -32,6 +34,8 @@ struct SettingsView: View {
                             // DISPLAY PP VIEW
                         }
                     }
+                    .listRowBackground(Color.gray.opacity(0.1))
+
                     // License form links
                     Section {
                         // App version
@@ -41,11 +45,14 @@ struct SettingsView: View {
                             Text("Licenses")
                         }
                     }
+                    .listRowBackground(Color.gray.opacity(0.1))
                 }
+                .scrollContentBackground(.hidden)
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
         }
+        //.toolbar(.hidden, for: .tabBar)
     }
     
     // Licenses used in creation of app
@@ -55,10 +62,13 @@ struct SettingsView: View {
                 Section {
                     Text(settingsViewModel.licensesText)
                 }
+                .listRowBackground(Color.gray.opacity(0.1))
             }
+            .scrollContentBackground(.hidden)
             .navigationTitle("Licenses")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .toolbar(.hidden, for: .tabBar)
     }
 }
 

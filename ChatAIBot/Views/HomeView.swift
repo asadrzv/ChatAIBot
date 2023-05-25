@@ -19,6 +19,10 @@ struct HomeView: View {
                 .tabItem {
                     Label("Image AI", systemImage: "theatermask.and.paintbrush")
                 }
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape")
+                }
         }
     }
 }
