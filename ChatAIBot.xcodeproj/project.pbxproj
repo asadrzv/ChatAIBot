@@ -27,6 +27,8 @@
 		2499C1DB2A1DAA3300B4F5ED /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2499C1DA2A1DAA3300B4F5ED /* SettingsViewModel.swift */; };
 		2499C1DD2A1DB08C00B4F5ED /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2499C1DC2A1DB08C00B4F5ED /* SettingsViewModelTests.swift */; };
 		24A1D6EC2A1E81BD00E3B747 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 24A1D6EB2A1E81BD00E3B747 /* ActivityIndicatorView */; };
+		24BE506C2A20016200F2B4EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24BE506B2A20016200F2B4EF /* GoogleService-Info.plist */; };
+		24BE506F2A2003B100F2B4EF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 24BE506E2A2003B100F2B4EF /* FirebaseAnalytics */; };
 		24DDC1092A0C25830063DC5C /* ChatAIBotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DDC1082A0C25830063DC5C /* ChatAIBotApp.swift */; };
 		24DDC10D2A0C25880063DC5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24DDC10C2A0C25880063DC5C /* Assets.xcassets */; };
 		24DDC1102A0C25880063DC5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24DDC10F2A0C25880063DC5C /* Preview Assets.xcassets */; };
@@ -78,6 +80,7 @@
 		2499C1D62A1D86C900B4F5ED /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		2499C1DA2A1DAA3300B4F5ED /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		2499C1DC2A1DB08C00B4F5ED /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
+		24BE506B2A20016200F2B4EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		24DDC1052A0C25830063DC5C /* ChatAIBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatAIBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DDC1082A0C25830063DC5C /* ChatAIBotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAIBotApp.swift; sourceTree = "<group>"; };
 		24DDC10C2A0C25880063DC5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 			files = (
 				24DDC1342A0C263D0063DC5C /* OpenAISwift in Frameworks */,
 				24A1D6EC2A1E81BD00E3B747 /* ActivityIndicatorView in Frameworks */,
+				24BE506F2A2003B100F2B4EF /* FirebaseAnalytics in Frameworks */,
 				2411FDFF2A1411180043D50A /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +171,7 @@
 			children = (
 				24DDC10E2A0C25880063DC5C /* Preview Content */,
 				24DDC10C2A0C25880063DC5C /* Assets.xcassets */,
+				24BE506B2A20016200F2B4EF /* GoogleService-Info.plist */,
 				24DDC1482A0C7DC30063DC5C /* OpenAIService-Info.plist */,
 				24DDC1472A0C7C400063DC5C /* Secrets.xcconfig */,
 				2499C1D42A1D76E900B4F5ED /* Licenses.txt */,
@@ -306,6 +311,7 @@
 				24DDC1332A0C263D0063DC5C /* OpenAISwift */,
 				2411FDFE2A1411180043D50A /* AlertToast */,
 				24A1D6EB2A1E81BD00E3B747 /* ActivityIndicatorView */,
+				24BE506E2A2003B100F2B4EF /* FirebaseAnalytics */,
 			);
 			productName = ChatAIBot;
 			productReference = 24DDC1052A0C25830063DC5C /* ChatAIBot.app */;
@@ -383,6 +389,7 @@
 				24DDC1322A0C263D0063DC5C /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 				2411FDFD2A1411180043D50A /* XCRemoteSwiftPackageReference "AlertToast" */,
 				24A1D6EA2A1E81BD00E3B747 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
+				24BE506D2A2003B100F2B4EF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 24DDC1062A0C25830063DC5C /* Products */;
 			projectDirPath = "";
@@ -401,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24DDC1102A0C25880063DC5C /* Preview Assets.xcassets in Resources */,
+				24BE506C2A20016200F2B4EF /* GoogleService-Info.plist in Resources */,
 				2499C1D52A1D76E900B4F5ED /* Licenses.txt in Resources */,
 				24DDC10D2A0C25880063DC5C /* Assets.xcassets in Resources */,
 			);
@@ -537,7 +545,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -591,7 +599,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -815,6 +823,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		24BE506D2A2003B100F2B4EF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		24DDC1322A0C263D0063DC5C /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
@@ -835,6 +851,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 24A1D6EA2A1E81BD00E3B747 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
 			productName = ActivityIndicatorView;
+		};
+		24BE506E2A2003B100F2B4EF /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24BE506D2A2003B100F2B4EF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 		24DDC1332A0C263D0063DC5C /* OpenAISwift */ = {
 			isa = XCSwiftPackageProductDependency;

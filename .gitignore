@@ -93,3 +93,6 @@ iOSInjectionProject/
 #
 # Do not store OpenAI API Key to git repo.
 ChatAIBot/Resources/Secrets.xcconfig
+
+# Do not store Google Firebase API Key to git repo.
+ChatAIBot/Resources/GoogleService-Info.plist
