@@ -10,6 +10,10 @@ import SwiftUI
 struct SettingsView: View {
     @StateObject private var settingsViewModel = SettingsViewModel()
     
+    @State private var isShowingTOSSheet = false
+    @State private var isShowingPPSheet = false
+    @State private var isShowingLicensesSheet = false
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -28,10 +32,13 @@ struct SettingsView: View {
                     // Legal form links
                     Section("Legal") {
                         Button("Terms of Service") {
-                            // DISPLAY TOS VIEW
+                            isShowingTOSSheet.toggle()
                         }
                         Button("Privacy Policy") {
-                            // DISPLAY PP VIEW
+                            isShowingPPSheet.toggle()
+                        }
+                        Button("Licenses") {
+                            isShowingLicensesSheet.toggle()
                         }
                     }
                     .listRowBackground(Color.gray.opacity(0.1))
@@ -41,9 +48,9 @@ struct SettingsView: View {
                         // App version
                         Text("Chat AI v" + settingsViewModel.appVersion)
                             //.font(.footnote)
-                        NavigationLink(destination: LicensesView) {
+                        /*NavigationLink(destination: LicensesView) {
                             Text("Licenses")
-                        }
+                        }*/
                     }
                     .listRowBackground(Color.gray.opacity(0.1))
                 }
@@ -52,7 +59,21 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
         }
-        //.toolbar(.hidden, for: .tabBar)
+        // Display Terms of Service sheet on button press
+        .sheet(isPresented: $isShowingTOSSheet) {
+            TermsOfServiceView
+                .presentationDetents([.medium, .large])
+        }
+        // Display Privacy Policy sheet on button press
+        .sheet(isPresented: $isShowingPPSheet) {
+            PrivacyPolicyView
+                .presentationDetents([.medium, .large])
+        }
+        // Display Licenses sheet on button press
+        .sheet(isPresented: $isShowingLicensesSheet) {
+            LicensesView
+                .presentationDetents([.medium, .large])
+        }
     }
     
     // Licenses used in creation of app
@@ -66,9 +87,35 @@ struct SettingsView: View {
             }
             .scrollContentBackground(.hidden)
             .navigationTitle("Licenses")
-            .navigationBarTitleDisplayMode(.inline)
         }
-        .toolbar(.hidden, for: .tabBar)
+    }
+    
+    // Terms of Service view
+    private var TermsOfServiceView: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    Text("Terms of Service")
+                }
+                .listRowBackground(Color.gray.opacity(0.1))
+            }
+            .scrollContentBackground(.hidden)
+            .navigationTitle("Terms of Service")
+        }
+    }
+    
+    // Privacy Policy view
+    private var PrivacyPolicyView: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    Text("Privacy Policy")
+                }
+                .listRowBackground(Color.gray.opacity(0.1))
+            }
+            .scrollContentBackground(.hidden)
+            .navigationTitle("Privacy Policy")
+        }
     }
 }
 
