@@ -11,11 +11,16 @@ extension Bundle {
     
     // Get app version number as String
     func getAppVersion() -> String {
-        guard let version = self.object(forInfoDictionaryKey: "CFBundleShortVersionString") else {
-            fatalError("ERROR: Could not get App version number from Bundle!")
+        // Find release version number
+        guard let releaseVersionNumber = self.object(forInfoDictionaryKey: "CFBundleShortVersionString") else {
+            fatalError("ERROR: Could not get App release version number from Bundle!")
+        }
+        // Find build version number
+        guard let buildVersionNumber = self.object(forInfoDictionaryKey: "CFBundleVersion") else {
+            fatalError("ERROR: Could not get App build version number from Bundle!")
         }
         
-        return "\(version)"
+        return "\(releaseVersionNumber)" + "." + "\(buildVersionNumber)"
     }
     
     // Get OpenAI API Key from Info.plist (Secrets.xcconfig)

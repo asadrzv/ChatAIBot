@@ -19,13 +19,17 @@ struct SettingsView: View {
             VStack {
                 Form {
                     // General form links
-                    Section("General") {
+                    Section {
                         ShareLink(item: Constants.sampleImageURL) { //REPLACE LINK WITH APP STORE LINK
                             Text("Share")
                         }
                         Button("Rate Us") {
                             // OPEN LINK TO RATE APP ON APPSTORE
                         }
+                    } header: {
+                        Text("General")
+                    } footer: {
+                        Text("We would greatly appreciate any feedback you have that could help us improve your experience!")
                     }
                     .listRowBackground(Color.gray.opacity(0.1))
                     
@@ -42,12 +46,14 @@ struct SettingsView: View {
                         }
                     }
                     .listRowBackground(Color.gray.opacity(0.1))
-
+                    
                     // App version
                     Section {
+                        //Spacer()
+                    } footer: {
                         Text("Chat AI v" + settingsViewModel.appVersion)
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
-                    .listRowBackground(Color.gray.opacity(0.1))
                 }
                 .scrollContentBackground(.hidden)
             }
