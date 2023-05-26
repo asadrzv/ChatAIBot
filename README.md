@@ -20,6 +20,9 @@ The following functionality is completed:
 * [AlertToast](https://github.com/elai950/AlertToast)
 * [ActivityIndicatorView](https://github.com/exyte/ActivityIndicatorView)
 
+## Analytics
+* [Firebase](https://github.com/firebase/firebase-ios-sdk)
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
