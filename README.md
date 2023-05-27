@@ -23,6 +23,9 @@ The following functionality is completed:
 ## Analytics
 * [Firebase](https://github.com/firebase/firebase-ios-sdk)
 
+## Design
+* [Canva](https://www.canva.com/)
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
