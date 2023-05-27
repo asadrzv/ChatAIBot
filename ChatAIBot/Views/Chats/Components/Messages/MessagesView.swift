@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct MessagesView: View {
     let messages: [Message]
@@ -27,6 +28,11 @@ struct MessagesView: View {
                                 isTextCopied.toggle()
                                 // Haptic impact feedback for copying message
                                 hapticImpactFeedback(style: .medium)
+                                
+                                // Firebase Analytics: log user copying message to clipboard
+                                Analytics.logEvent("message_copied_to_clipboard", parameters: [
+                                    AnalyticsParameterScreenName: "MessagesView",
+                                ])
                             }
                             // Animation to slide up from bottom of view upon creation
                             .transition(.move(edge: .bottom))

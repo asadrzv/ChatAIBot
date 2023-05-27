@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct SettingsView: View {
-    @StateObject private var settingsViewModel = SettingsViewModel()
+    //@StateObject private var settingsViewModel = SettingsViewModel()
     
     @State private var isShowingTOSSheet = false
     @State private var isShowingPPSheet = false
@@ -20,9 +21,18 @@ struct SettingsView: View {
                 Form {
                     // General form links
                     Section {
+                        // Share app button
                         ShareLink(item: Constants.sampleImageURL) { //REPLACE LINK WITH APP STORE LINK
                             Text("Share")
+                                // FIX: DOESN"T WORK WITH SHARELINK
+                                /*.onTapGesture {
+                                    // Firebase Analytics: log user sharing app to others
+                                    Analytics.logEvent("share_button_pressed", parameters: [
+                                        AnalyticsParameterScreenName: "SettingsView"
+                                    ])
+                                }*/
                         }
+                        // Rate app on AppStore button
                         Button("Rate Us") {
                             // OPEN LINK TO RATE APP ON APPSTORE
                         }
@@ -51,7 +61,7 @@ struct SettingsView: View {
                     Section {
                         //Spacer()
                     } footer: {
-                        Text("Chat AI v" + settingsViewModel.appVersion)
+                        Text("Chat AI v" + Bundle.main.getAppVersion())
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
@@ -62,60 +72,24 @@ struct SettingsView: View {
         }
         // Display Terms of Service sheet on button press
         .sheet(isPresented: $isShowingTOSSheet) {
-            TermsOfServiceView
+            TermsOfServiceView()
                 .presentationDetents([.medium, .large])
         }
         // Display Privacy Policy sheet on button press
         .sheet(isPresented: $isShowingPPSheet) {
-            PrivacyPolicyView
+            PrivacyPolicyView()
                 .presentationDetents([.medium, .large])
         }
         // Display Licenses sheet on button press
         .sheet(isPresented: $isShowingLicensesSheet) {
-            LicensesView
+            LicensesView()
                 .presentationDetents([.medium, .large])
         }
-    }
-    
-    // Licenses used in creation of app
-    private var LicensesView: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    Text(settingsViewModel.licensesText)
-                }
-                .listRowBackground(Color.gray.opacity(0.1))
-            }
-            .scrollContentBackground(.hidden)
-            .navigationTitle("Licenses")
-        }
-    }
-    
-    // Terms of Service view
-    private var TermsOfServiceView: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    Text("Terms of Service")
-                }
-                .listRowBackground(Color.gray.opacity(0.1))
-            }
-            .scrollContentBackground(.hidden)
-            .navigationTitle("Terms of Service")
-        }
-    }
-    
-    // Privacy Policy view
-    private var PrivacyPolicyView: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    Text("Privacy Policy")
-                }
-                .listRowBackground(Color.gray.opacity(0.1))
-            }
-            .scrollContentBackground(.hidden)
-            .navigationTitle("Privacy Policy")
+        // Firebase Analytics: log user visting SettingsView
+        .onAppear {
+            Analytics.logEvent("settings_screen_viewed", parameters: [
+                AnalyticsParameterScreenName: "SettingsView"
+            ])
         }
     }
 }

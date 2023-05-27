@@ -19,6 +19,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct ChatAIBotApp: App {
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+
     var body: some Scene {
         WindowGroup {
             HomeView()

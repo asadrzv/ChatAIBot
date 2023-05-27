@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AlertToast
+import FirebaseAnalytics
 
 struct ChatAIView: View {
     @StateObject private var chatViewModel = ChatViewModel(openAIService: OpenAIManager())
@@ -64,6 +65,11 @@ struct ChatAIView: View {
                         //}
                         // Haptic feedback for clearing chat
                         hapticImpactFeedback(style: .light)
+                        
+                        // Firebase Analytics: log user clearing chat in ChatAIView
+                        Analytics.logEvent("clear_chat_button_pressed", parameters: [
+                            AnalyticsParameterScreenName: "ChatAIView"
+                        ])
                     }) {
                         Text("Clear")
                             .foregroundColor(.black)
@@ -85,6 +91,12 @@ struct ChatAIView: View {
                 type: .regular,
                 title: "Message Copied"
             )
+        }
+        // Firebase Analytics: log user visting ChatAIView
+        .onAppear {
+            Analytics.logEvent("chatai_screen_viewed", parameters: [
+                AnalyticsParameterScreenName: "ChatAIView"
+            ])
         }
     }
 }

@@ -8,11 +8,5 @@
 import Foundation
 
 class SettingsViewModel: ObservableObject {
-    @Published var appVersion = ""
-    @Published var licensesText = ""
-    
-    init() {
-        appVersion = Bundle.main.getAppVersion()
-        licensesText = Bundle.main.load(file: "Licenses")
-    }
+
 }

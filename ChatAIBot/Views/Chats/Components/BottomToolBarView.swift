@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalytics
 
 struct BottomToolBarView: View {
     @ObservedObject var chatViewModel: ChatViewModel
@@ -32,6 +33,11 @@ struct BottomToolBarView: View {
                         chatViewModel.sendMessage(forType: messageType)
                     }
                     isTextFieldFocused.toggle()
+                    
+                    // Firebase Analytics: log user sending message
+                    Analytics.logEvent("send_message_button_pressed", parameters: [
+                        AnalyticsParameterScreenName: "BottomToolBarView",
+                    ])
                 }) {
                     Image(systemName: "paperplane.fill")
                         .foregroundColor(.white)
